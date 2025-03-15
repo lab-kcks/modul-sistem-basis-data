@@ -94,6 +94,7 @@ Bentuk Notasi ERD Crow’s Foot
 
 <img src="./img/cf.webp" />
 <img src="./img/cf1.webp" />
+<img src="./img/tambahanNabil.jpg" />
 
 ## 4. Spesialisasi dan Generalisasi
 
