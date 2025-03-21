@@ -2,10 +2,11 @@
 
 ## Outline
 - [Normalisasi Overview](#Normalisasi)  
-- [NF1] (#NF1)  
+- [NF1](#NF1)  
 - [NF2](#NF2)  
-- [Kontribusi](#kontribusi)  
-- [Lisensi](#lisensi)
+- [NF3](#NF3)  
+- [BCNF (3.5)](#BCNF)
+- [NF4](#nf4)
 
 # Normalisasi
 
