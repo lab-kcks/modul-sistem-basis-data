@@ -200,4 +200,30 @@ Untuk memenuhi BCNF, kita dapat melakukan langkah-langkah berikut:
 
 [Klik disini untuk penjelasan lebih lanjut lainnya tentang BCNF!](https://youtu.be/NNjUhvvwOrk?si=zYpgF0IKjK9_VgiS)
 
-ppppp
+# NF4
+
+Ketergantungan multivariabel (multivalued dependencies) terjadi ketika satu kunci menghasilkan dua atau lebih nilai dari dua atribut lainnya yang independen satu sama lain. Dalam konteks Normalisasi Tingkat Keempat (4NF), tidak ada baris yang mengandung dua atau lebih ketergantungan multivariabel berarti tidak ada situasi di mana satu kunci menghasilkan beberapa nilai dari dua atribut lainnya yang independen.
+
+Dengan kata lain, jika sebuah tabel tidak memiliki ketergantungan multivariabel, maka setiap nilai kunci hanya menghasilkan satu nilai untuk setiap atribut yang terkait, dan tidak ada hubungan yang kompleks di antara nilai-nilai tersebut. Hal ini membantu menjaga integritas dan struktur data yang lebih terorganisir dalam basis data.
+
+Untuk memenuhi Normalisasi Tingkat Keempat (4NF), tabel harus memenuhi dua syarat utama:
+
+1. Sudah dalam Normalisasi Tingkat Ketiga (3NF).
+
+2. Tidak memiliki ketergantungan multivariabel (multivalued dependencies), yang berarti tidak ada baris yang mengandung dua atau lebih ketergantungan multivariabel.
+
+**Contohnya**
+
+![alt text](image.png)
+
+- Karyawan dapat memiliki banyak penugasan dan juga dapat terlibat dalam beberapa organisasi pelayanan.
+
+- Ini mengacu pada ketergantungan multivariabel ketika satu kunci menentukan nilai-nilai ganda dari dua atribut lainnya dan atribut-atribut tersebut independen satu sama lain.
+
+**Solusinya adalah:**
+
+- Membuat tabel baru untuk komponen ketergantungan multivariabel.
+
+- Dalam contoh ini, kita dapat membuat tabel untuk ASSIGNMENT dan SERVICES_V1.
+
+![alt text](image-1.png)
