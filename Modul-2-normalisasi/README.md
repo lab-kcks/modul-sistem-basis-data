@@ -5,7 +5,7 @@
 - [NF1](#NF1)  
 - [NF2](#NF2)  
 - [NF3](#NF3)  
-- [BCNF (3.5)](#BCNF)
+- [BCNF](#bcnf-35)
 - [NF4](#nf4)
 
 # Normalisasi
