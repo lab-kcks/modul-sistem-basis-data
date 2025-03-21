@@ -7,6 +7,7 @@
 - [NF3](#NF3)  
 - [BCNF](#bcnf-35)
 - [NF4](#nf4)
+- [Contoh Soal](#contoh-soal)
 
 # Normalisasi
 
@@ -228,3 +229,49 @@ Untuk memenuhi Normalisasi Tingkat Keempat (4NF), tabel harus memenuhi dua syara
 - Dalam contoh ini, kita dapat membuat tabel untuk ASSIGNMENT dan SERVICES_V1.
 
 ![alt text](image-1.png)
+
+# Contoh Soal
+
+![alt text](image-2.png)
+
+Diberikan sebuah tabel normalisasi data, tentukan:
+
+1. Dalam bentuk apakah tabel saat ini?
+
+1. Identifikasi Primary Key, Partial Dependencies, dan Transitive Dependencies. 
+
+2. Tabel Hasil Transformasi menjadi NF2 
+
+3. Tabel Hasil Transformasi menjadi NF3
+
+**Caranya:**
+
+1. Tabel berada dalam bentuk 1NF karena :
+
+   - Data Bersifat Atomic (Tidak Ada Nilai yang Berulang dalam Satu Sel)
+
+   - Tidak Ada Repeating Groups (Kelompok Kolom Berulang)
+
+   - Setiap Baris Dapat Dikenali Secara Unik
+
+2. Dari tabel tersebut diketahui bahwa :
+
+![alt text](image-3.png)
+
+3. Hasil Transformasi menjadi NF2
+
+![alt text](image-4.png)
+
+4. Hasil transformasi menjadi NF3
+
+![alt text](image-5.png)
+
+***
+
+# References
+
+- https://www.geeksforgeeks.org/introduction-of-database-normalization/
+
+- https://www.geeksforgeeks.org/first-normal-form-1nf/
+
+- https://www.geeksforgeeks.org/second-normal-form-2nf/
