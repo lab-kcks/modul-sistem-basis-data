@@ -275,3 +275,5 @@ Diberikan sebuah tabel normalisasi data, tentukan:
 - https://www.geeksforgeeks.org/first-normal-form-1nf/
 
 - https://www.geeksforgeeks.org/second-normal-form-2nf/
+
+- https://karjonoblog.wordpress.com/2018/06/28/normalisasi-database-1nf-2nf-3nfbcnf-dan-4nf/- 
