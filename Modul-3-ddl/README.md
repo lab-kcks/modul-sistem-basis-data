@@ -38,6 +38,30 @@ Alasan mempelajari SQL, antara lain:
 * **Mudah Dipelajari (Relatif):** Dibandingkan bahasa pemrograman lain, sintaks SQL sering dianggap lebih intuitif dan mirip dengan bahasa Inggris, membuatnya relatif lebih mudah dipelajari bagi pemula.
 * **Kekuatan Analitik:** SQL tidak hanya untuk mengambil data, tetapi juga memiliki fungsi bawaan untuk agregasi (SUM, AVG, COUNT), pengurutan (ORDER BY), dan pengelompokan (GROUP BY) yang sangat berguna untuk analisis data dasar.
 
+# Perbedaan SQL dan ORM
+
+**SQL (Structured Query Language)** adalah bahasa yang digunakan untuk mengakses, mengelola, dan memanipulasi data dalam sistem basis data relasional. SQL bersifat deklaratif, di mana pengguna secara langsung menuliskan perintah untuk mengambil atau mengubah data di database.
+
+**ORM (Object-Relational Mapping)** adalah sebuah pendekatan yang memungkinkan developer menggunakan objek dalam kode pemrograman untuk berinteraksi dengan database. ORM menyediakan abstraksi sehingga kita tidak perlu menulis query SQL secara manual, melainkan cukup bekerja dengan objek dan fungsi dari bahasa pemrograman yang digunakan.
+
+ORM sangat membantu dalam mempercepat proses pengembangan, terutama pada aplikasi berbasis OOP (Object-Oriented Programming), namun tetap penting memahami SQL agar dapat menangani kasus-kasus kompleks yang tidak didukung sepenuhnya oleh ORM.
+
+---
+
+### Tabel Perbedaan SQL dan ORM
+
+| Aspek                | SQL                                            | ORM                                                                 |
+|----------------------|------------------------------------------------|----------------------------------------------------------------------|
+| **Definisi**          | Bahasa query untuk mengelola database relasional. | Teknik pemetaan antara objek dalam kode program ke tabel di database. |
+| **Level Abstraksi**   | Rendah – menulis query langsung ke database.   | Tinggi – interaksi melalui objek dan class dalam kode.              |
+| **Cara Kerja**        | Menggunakan perintah seperti `SELECT`, `INSERT`, dll. | Menggunakan objek dan method yang diterjemahkan ke SQL oleh ORM.     |
+| **Kelebihan**         | Kontrol penuh, efisien untuk query kompleks.  | Cepat dikembangkan, cocok untuk aplikasi berbasis OOP.              |
+| **Kekurangan**        | Perlu pemahaman SQL, lebih banyak kode manual. | Bisa kurang efisien, terbatas untuk query kompleks.                 |
+| **Contoh**            | `SELECT * FROM users WHERE age > 25;`         | `User.objects.filter(age__gt=25)` (Django ORM)                      |
+| **Cocok Digunakan Saat** | Perlu kontrol performa dan query yang kompleks. | Proyek cepat atau berbasis OOP dengan tim besar.                    |
+
+---
+
 
 # Kelebihan MySQL
 
