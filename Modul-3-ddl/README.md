@@ -1,5 +1,32 @@
 # Module 3
+# Daftar Isi
 
+- [Pengenalan MySQL](#pengenalan-mysql)
+- [SQL digunakan dimana saja?](#sql-digunakan-dimana-saja)
+- [Mengapa Belajar SQL?](#mengapa-belajar-sql)
+- [Perbedaan SQL dan ORM](#perbedaan-sql-dan-orm)
+- [Kelebihan MySQL](#kelebihan-mysql)
+- [Kekurangan MySQL](#kekurangan-mysql)
+- [Instalasi MySQL](#instalasi-mysql)
+- [Client MySQL menggunakan XAMPP](#client-mysql-menggunakan-xampp)
+  - [Instalasi XAMPP](#instalasi-xampp)
+  - [Cara Menjalankan XAMPP](#cara-menjalankan-xampp)
+- [Cara mengakses MySQL](#cara-mengakses-mysql)
+- [Tipe Data pada MySQL](#tipe-data-pada-mysql)
+  - [Tipe Data String](#tipe-data-string)
+  - [Tipe Data Numeric/Angka](#tipe-data-numericangka)
+  - [Tipe Data Date / Waktu](#tipe-data-date--waktu)
+  - [Tipe Data Binary](#tipe-data-binary)
+  - [Tipe Data Boolean](#tipe-data-boolean)
+- [SQL Command Types](#sql-command-types)
+  - [1. Data Manipulation Language (DML)](#1-data-manipulation-language-dml)
+  - [2. Data Definition Language (DDL)](#2-data-definition-language-ddl)
+  - [3. Data Control Language (DCL)](#3-data-control-language-dcl)
+  - [4. Data Query Language (DQL)](#4-data-query-language-dql)
+  - [5. Transaction Control Language (TCL)](#5-transaction-control-language-tcl)
+  - [6. Membuat Database (melalui console dan UI)](#6-membuat-database-melalui-console-dan-ui)
+  - [7. Membuat Table](#7-membuat-table)
+  - [8. Constraint](#8-constraint-table)
 # Pengenalan MySQL
 
 Setiap bahasa pemrograman memiliki fungsi yang berbeda. Begitu pula dengan Structured Query Language (SQL). SQL adalah bahasa query yang dirancang untuk pengambilan informasi tertentu dari database. Meskipun saat ini sudah ada berbagai jenis database, seperti MySQL, Microsoft SQL Server, dan PostgreSQL. Akan tetapi mayoritas database tersebut tetap menggunakan dasar SQL.
