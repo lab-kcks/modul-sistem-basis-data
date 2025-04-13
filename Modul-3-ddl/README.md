@@ -224,6 +224,15 @@ Berikut tabel beberapa contoh tipe data binary yang dapat digunakan pada DBMS MY
 | 4.  | MEDIUMBLOB | Menyimpan gambar ukuran cukup besar  | 16.777.215 bytes    |
 | 5.  | LONGBLOB   | Menyimpan gambar ukuran sangat besar | 4.294.967.295 bytes |
 
+## Tipe Data Boolean
+
+Tipe Data Boolean adalah suatu tipe data yang sifatnya seperti if-else atau if-else-if menungkinkan suatu kolom untuk memiliki pilihan data untuk disimpan. Jadi dengan penerapan tipe data boolean ini memungkinkan untuk menolak insert data yang nilainya diluar pilihan.
+
+| No. | Tipe Data | Fungsi                                                                 |
+|-----|-----------|------------------------------------------------------------------------|
+| 1   | BOOLEAN   | Membandingkan tipe data numerik, 0 = False, dan 1 = True               |
+| 2   | ENUM      | Menyimpan data dalam bentuk String tertentu yang telah ditentukan pada parameter-nya |
+
 **Contoh Pengaplikasian Tipe Data pada Console MySQL**
 
 <img src="./tipedatalast.webp" />
