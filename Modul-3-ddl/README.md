@@ -323,7 +323,7 @@ Pernyataan DQL digunakan untuk mengambil data dari basis data menggunakan kueri.
 
 | Command |          | Description                                                        |
 | ------- | -------- | ------------------------------------------------------------------ |
-|         | SELECT   | Memilih atribut dari baris dalam satu atau lebih tabel atau view   |
+| SELECT  |          | Memilih atribut dari baris dalam satu atau lebih tabel atau view   |
 |         | FROM     | Menentukan tabel dari mana data harus diambil                      |
 |         | WHERE    | Membatasi pemilihan baris berdasarkan conditional expression       |
 |         | GROUP BY | Baris kelompok yang dipilih berdasarkan satu atau lebih atribut    |
