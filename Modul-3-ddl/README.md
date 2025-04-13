@@ -10,6 +10,35 @@ Lalu, apakah SQL tetap berguna jika digunakan bersamaan dengan bahasa pemrograma
 
 MySQL masuk ke dalam jenis RDBMS (Relational Database Management System). Maka dari itu, istilah semacam baris, kolom, tabel, dipakai pada MySQL. Contohnya di dalam MySQL sebuah database terdapat satu atau beberapa tabel.
 
+# SQL digunakan dimana saja?
+
+SQL memiliki cakupan penggunaan yang sangat luas di berbagai bidang dan industri. Berikut beberapa contoh utamanya:
+
+* **Administrasi Database:** Para *Database Administrator* (DBA) menggunakan SQL setiap hari untuk membuat, mengelola, memelihara, dan mengamankan *database*.
+* **Pengembangan Perangkat Lunak (Backend):** *Developer* menggunakan SQL untuk mengintegrasikan aplikasi (web, mobile, desktop) dengan *database*. Mereka menulis kueri SQL untuk menyimpan data pengguna, mengambil konten, mengelola sesi, dan banyak lagi.
+* **Analisis Data:** *Data Analyst* menggunakan SQL untuk mengekstrak, membersihkan, dan menganalisis data dari *database* guna menemukan *insight*, membuat laporan, dan mendukung pengambilan keputusan bisnis.
+* **Business Intelligence (BI):** Profesional BI menggunakan SQL untuk membangun *dashboard* dan laporan interaktif dengan mengambil data relevan dari *data warehouse* atau *database* operasional.
+* **Ilmu Data (Data Science):** *Data Scientist* seringkali menggunakan SQL pada tahap awal *workflow* mereka untuk mengumpulkan dan mempersiapkan dataset besar dari berbagai sumber data relasional sebelum melakukan pemodelan statistik atau *machine learning*.
+* **Pengujian Perangkat Lunak (QA):** *Tester* terkadang perlu menggunakan SQL untuk memverifikasi data di *database* setelah menjalankan skenario pengujian pada aplikasi.
+* **Berbagai Industri:** Hampir semua industri yang mengelola data dalam jumlah besar bergantung pada *database* yang menggunakan SQL, termasuk:
+    * Keuangan (data transaksi, nasabah)
+    * E-commerce (data produk, pelanggan, pesanan)
+    * Kesehatan (rekam medis elektronik)
+    * Pendidikan (data siswa, mata kuliah)
+    * Media Sosial (data pengguna, postingan, interaksi)
+    * Telekomunikasi (data pelanggan, panggilan)
+
+# Mengapa Belajar SQL?
+
+Alasan mempelajari SQL, antara lain:
+
+* **Permintaan Tinggi di Industri:** Keterampilan SQL sangat dicari di berbagai peran pekerjaan seperti *data analyst*, *backend developer*, *database administrator*, *data scientist*, dan *business intelligence analyst*.
+* **Fundamental untuk Data:** SQL adalah bahasa standar de facto untuk *database* relasional, yang merupakan cara paling umum untuk menyimpan data terstruktur. Memahaminya adalah dasar yang kuat untuk bekerja dengan data.
+* **Manajemen Data yang Efisien:** SQL memungkinkan Anda mengambil data spesifik yang Anda butuhkan dari kumpulan data yang sangat besar dengan cepat dan efisien.
+* **Mudah Dipelajari (Relatif):** Dibandingkan bahasa pemrograman lain, sintaks SQL sering dianggap lebih intuitif dan mirip dengan bahasa Inggris, membuatnya relatif lebih mudah dipelajari bagi pemula.
+* **Kekuatan Analitik:** SQL tidak hanya untuk mengambil data, tetapi juga memiliki fungsi bawaan untuk agregasi (SUM, AVG, COUNT), pengurutan (ORDER BY), dan pengelompokan (GROUP BY) yang sangat berguna untuk analisis data dasar.
+
+
 # Kelebihan MySQL
 
 1. **Mendukung Integrasi dengan Bahasa Pemrograman Lain**
