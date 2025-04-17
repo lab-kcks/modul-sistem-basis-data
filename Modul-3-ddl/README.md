@@ -138,7 +138,7 @@ Kebanyakan *developer game* dan *mobile* tidak menggunakan MySQL dikarenakan
 
 Berikut ini merupakan langkah-langkah yang dilakukan untuk melakukan download dan instalasi sebuah aplikasi MySQL. Aplikasi MySQL yang satu ini bersifat stand alone, di mana MySQL yang disediakan oleh developer MySQL ini dapat dibuka secara implisit di terminal/command prompt OS. Instalasi MySQL versi ini bersifat opsional, karena nantinya kita akan lebih sering menggunakan aplikasi XAMPP (Aplikasi AMP yang menggabungkan Apache, MySQL, dan PHPMyAdmin). Namun, apabila ingin coba menginstall, berikut merupakan langkah-langkahnya:
 
-1. Download Aplikasi MySQL Community Server http://dev.mysql.com/downloads/mysql/ dan kemudian pilih package yang ingin diinstall sesuai dengan OS (Windows, MacOS, Ubuntu, dll) yang digunakan.
+1. Download Aplikasi MySQL Community Server http://dev.mysql.com/downloads/mysql dan kemudian pilih package yang ingin diinstall sesuai dengan OS (Windows, MacOS, Ubuntu, dll) yang digunakan.
 
 2. Ikuti Petunjuk Penginstallan pada https://www.mysqltutorial.org/install-mysql/
 
