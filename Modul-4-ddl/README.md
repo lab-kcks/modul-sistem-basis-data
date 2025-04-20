@@ -6,6 +6,7 @@
 
 
 ## ALTER TABLE (DDL)
+_Statement_ ```ALTER TABLE``` digunakan untuk menambah, menghapus, dan memodifikasi kolom yang ada pada sebuah tabel.
 ```
 ALTER TABLE table_name
 {ADD|MODIFY|DROP|CHANGE} (column/data_type);
