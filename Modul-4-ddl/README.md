@@ -1,10 +1,16 @@
 # Module 4
 ## Daftar Isi
+- [DDL](#ddl)
+- [DML](#dml)
+  - [INSERT](#1-menambah-data-baru-insert)
+  - [UPDATE](#2-modifikasi-data-update)
+  - [DELETE](#3-menghapus-data-delete)
+  - [SELECT](#4-menampilkan-data-select)
 
 ## Introduction
 ![image](https://github.com/user-attachments/assets/10eb221c-3239-46e3-b52b-fef60aa8d7a4)
 
-
+## DDL
 ## ALTER TABLE
 _Statement_ ```ALTER TABLE``` digunakan untuk menambah, menghapus, dan memodifikasi kolom yang ada pada sebuah tabel.
 ```
@@ -55,7 +61,104 @@ CHANGE COLUMN email cust_email VARCHAR(255)
 ## RENAME
 
 ## DML
-### Menambah Data Baru (INSERT)
-### Modifikasi Data (UPDATE)
-### Menghapus Data (DELETE)
-### Menampilkan Data (SELECT)
+### 1. Menambah Data Baru (INSERT)
+INSERT digunakan untuk menyisipkan (insert) data baru ke dalam tabel. Kalian dapat menentukan nilai-nilai yang akan dimasukkan ke dalam kolom-kolom yang sesuai.
+
+```
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+```
+
+Contoh Penggunaan :
+```
+INSERT INTO anggota (ID_Anggota, Nama_Anggota, No_Hp, Email)
+VALUES ('1', 'Haechan', '083134540788', 'aechaniee@gmail.com');
+```
+![INSERT 1](https://github.com/user-attachments/assets/c7b2be9c-b4d0-487c-9ec0-6072cf8a8cc1)
+
+Ketika kalian ingin memasukkan semua data pada kolom tanpa terkecuali, langsung saja tidak perlu di define kolomnya tidak apa asalkan data yang kamu masukkan juga urut dengan urutan kolom
+
+```
+INSERT INTO anggota
+VALUES ('2', 'Jeno', '083154641190', 'nonoo@gmail.com');
+```
+![INSERT 2](https://github.com/user-attachments/assets/ff0bc3d2-962b-4743-8669-2cfb608c97ba)
+
+### 2. Modifikasi Data (UPDATE)
+UPDATE digunakan untuk memperbarui data yang ada dalam tabel. Kalian dapat mengubah nilai-nilai kolom yang ada berdasarkan kondisi yang ditentukan.
+
+```
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+Contoh Penggunaan :
+```
+UPDATE anggota
+SET Nama_Anggota = 'Jaemin', Email = 'nana@gmail.com'
+WHERE ID_Anggota = 2;
+```
+![UPDATE 1](https://github.com/user-attachments/assets/759b99a5-9b44-48c1-9f37-86ddb8baa2da)
+
+⚠️ Jika kalian menggunakan syntax UPDATE jangan lupa menambahkan **WHERE**, karena jika kalian lupa maka data akan terupdate di semua baris 
+
+### 3. Menghapus Data (DELETE)
+DELETE digunakan untuk menghapus data dari tabel. Kalian dapat menentukan kondisi untuk membatasi data mana yang akan dihapus.
+
+```
+DELETE FROM table_name  
+WHERE condition;
+```
+
+Contoh Penggunaan :
+- Menghapus baris tertentu sesuai kondisi yang ditetapkan
+  ```
+  DELETE FROM anggota
+  WHERE ID_Anggota = 2;
+  ```
+  ![DELETE 1](https://github.com/user-attachments/assets/51de7755-0fee-4756-9810-3790d8c59bb5)
+
+- Menghapus semua baris pada tabel
+  ```
+  DELETE FROM anggota;
+  ```
+  ![DELETE 2](https://github.com/user-attachments/assets/a52a9789-175b-44b2-8cb5-5992f71d4545)
+
+### 4. Menampilkan Data (SELECT)
+SELECT digunakan untuk mengambil data dari satu atau lebih tabel di dalam database. Kalian dapat menggunakan SELECT untuk menentukan kolom yang ingin ditampilkan.
+
+- Menampilkan seluruh data di semua kolom tabel
+  ```
+  SELECT * FROM table_name; 
+  ```
+  Contoh Penggunaan :
+  ```
+  SELECT * FROM anggota;
+  ```
+  ![SELECT 1](https://github.com/user-attachments/assets/ba9a96f7-84b5-483d-9b0b-9e709f0102e3)
+
+- Menampilkan kolom-kolom tertentu
+  ```
+  SELECT column1, column2, ... 
+  FROM table_name;
+  ```
+  Contoh Penggunaan :
+  ```
+  SELECT Nama_Anggota, No_Hp
+  FROM anggota;
+  ```
+  ![SELECT 2](https://github.com/user-attachments/assets/73df9109-7c0c-4ebc-9815-413c76f2b1ad)
+
+- Menampilkan data atau baris-baris tertentu
+  ```
+  SELECT * FROM table_name WHERE condition; 
+  ```
+  Contoh Penggunaan :
+  ```  
+  SELECT * FROM anggota WHERE ID_Anggota = '1'; 
+  ```
+  ![SELECT 3](https://github.com/user-attachments/assets/6451f136-47ad-4ba9-9242-13bc61e46ec1)
+
+
+
