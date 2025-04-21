@@ -1,7 +1,7 @@
 # Module 4
 ## Daftar Isi
 - [DDL](#ddl)
-- [DML](#dml)
+- [DML](#dml-data-manipulation-language)
   - [INSERT](#1-menambah-data-baru-insert)
   - [UPDATE](#2-modifikasi-data-update)
   - [DELETE](#3-menghapus-data-delete)
@@ -60,7 +60,7 @@ CHANGE COLUMN email cust_email VARCHAR(255)
 ## TRUNCATE
 ## RENAME
 
-## DML
+## DML (Data Manipulation Language)
 ### 1. Menambah Data Baru (INSERT)
 INSERT digunakan untuk menyisipkan (insert) data baru ke dalam tabel. Kalian dapat menentukan nilai-nilai yang akan dimasukkan ke dalam kolom-kolom yang sesuai.
 
