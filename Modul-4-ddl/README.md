@@ -10,7 +10,7 @@
 ## Introduction
 ![image](https://github.com/user-attachments/assets/10eb221c-3239-46e3-b52b-fef60aa8d7a4)
 
-## DDL
+## DDL (Data Definition Language)
 ## ALTER TABLE
 _Statement_ ```ALTER TABLE``` digunakan untuk menambah, menghapus, dan memodifikasi kolom yang ada pada sebuah tabel.
 ```
@@ -89,7 +89,6 @@ TRUNCATE TABLE table_name
 TRUNCATE TABLE Customers
 ```
 
-## RENAME
 
 ## DML (Data Manipulation Language)
 ### 1. Menambah Data Baru (INSERT)
