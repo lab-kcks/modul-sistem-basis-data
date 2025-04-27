@@ -18,6 +18,7 @@ ALTER TABLE table_name
 {ADD|MODIFY|DROP|CHANGE} (column/data_type);
 ```
 ### A. Menambah Kolom (ADD)
+Command ini digunakan ketika ingin menambahkan kolom baru pada sebuah tabel yang sudah tersedia.
 ```
 ALTER TABLE table_name
 ADD column data_type;
@@ -29,6 +30,7 @@ ADD Email varchar(255);
 ```
 
 ### B. Mengubah Tipe Data Kolom (MODIFY)
+MODIFY digunakan ketika ingin mengubah tipe data dari sebuah kolom yang sudah tersedia.
 ```
 ALTER TABLE table_name
 MODIFY COLUMN column new_data_type;
@@ -38,6 +40,7 @@ ALTER TABLE Customers
 MODIFY COLUMN username char;
 ```
 ### C. Menghapus Kolom (DROP)
+Command ini digunakan ketika ingin menghapus sebuah kolom dalam tabel yang sudah tersedia.
 ```
 ALTER TABLE table_name
 DROP COLUMN column;
@@ -46,18 +49,46 @@ DROP COLUMN column;
 ALTER TABLE Customers
 DROP COLUMN Email;
 ```
-### D. Mengubah Nama Kolom (CHANGE)
+### D. Menghapus Tabel (DROP)
+Command DROP juga dapat digunakan jika ingin menghapus sebuah tabel. <br>
+```
+DROP TABLE table_name;
+```
+```
+DROP TABLE customers;
+```
+![image](https://github.com/user-attachments/assets/c9f1cf47-ea19-470e-9456-830cee4a1e53)
+
+### E. Mengubah Nama Kolom (CHANGE)
+Command ini digunakan untuk mengubah atau rename nama kolom yang sudah tersedia.
 ```
 ALTER TABLE table_name
-CHANGE COLUMN table_name new_table_name definition/data_type
+CHANGE COLUMN column_name new_column_name definition/data_type
 ```
 
 ```
 ALTER TABLE Customers
 CHANGE COLUMN email cust_email VARCHAR(255)
 ```
-## DROP 
+
+### F. Mengubah Nama Tabel (RENAME)
+Command ini digunakan ketika ingin mengubah nama dari sebuah tabel.
+```
+ALTER TABLE table_name RENAME TO new_table_name;
+```
+```
+ALTER TABLE customers RENAME TO pelanggan;
+```
+
 ## TRUNCATE
+TRUNCATE digunakan ketika ingin menghapus semua data yang ada di tabel tertentu tanpa menghapus tabel nya itu sendiri.
+```
+TRUNCATE TABLE table_name
+```
+```
+TRUNCATE TABLE Customers
+```
+
 ## RENAME
 
 ## DML (Data Manipulation Language)
