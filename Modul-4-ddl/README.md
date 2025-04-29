@@ -1,6 +1,12 @@
 # Module 4
 ## Daftar Isi
-- [DDL](#ddl)
+- [DDL](#ddl-data-definition-language)
+  - [ADD](a-menambah-kolom-add)
+  - [MODIFY]
+  - [DROP COLUMN]
+  - [DROP TABLE]
+  - [CHANGE COLUMN]
+  - [RENAME]
 - [DML](#dml-data-manipulation-language)
   - [INSERT](#1-menambah-data-baru-insert)
   - [UPDATE](#2-modifikasi-data-update)
