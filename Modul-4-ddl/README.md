@@ -1,8 +1,8 @@
 # Module 4
 ## Daftar Isi
 - [DDL](#ddl-data-definition-language)
-  - [ADD](a-menambah-kolom-add)
-  - [MODIFY]
+  - [ADD](#a-menambah-kolom-add)
+  - [MODIFY](#b-mengubah-Tipe-Data-Kolom-MODIFY)
   - [DROP COLUMN]
   - [DROP TABLE]
   - [CHANGE COLUMN]
