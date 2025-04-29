@@ -2,11 +2,11 @@
 ## Daftar Isi
 - [DDL](#ddl-data-definition-language)
   - [ADD](#a-menambah-kolom-add)
-  - [MODIFY](#b-mengubah-Tipe-Data-Kolom-MODIFY)
-  - [DROP COLUMN]
-  - [DROP TABLE]
-  - [CHANGE COLUMN]
-  - [RENAME]
+  - [MODIFY](#b-mengubah-tipe-data-kolom-modify)
+  - [DROP COLUMN](#c-menghapus-kolom-drop)
+  - [DROP TABLE](#d-menghapus-tabel-drop)
+  - [CHANGE COLUMN](#e-mengubah-nama-kolom-change)
+  - [RENAME](#f-mengubah-nama-tabel-rename)
 - [DML](#dml-data-manipulation-language)
   - [INSERT](#1-menambah-data-baru-insert)
   - [UPDATE](#2-modifikasi-data-update)
