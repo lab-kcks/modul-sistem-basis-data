@@ -14,7 +14,6 @@
     - [Operator LIKE](#operator-like)
 - [Ekspresi Query](#ekspresi-query)
 - [Fungsi Waktu](#fungsi-waktu)
-- [Referensi](#referensi)
 
 ## Pengurutan Data
 ORDER BY dalam _sql_ digunakan untuk mengurutkan hasil query pada sebuah kolom berdasarkan nilai terbesar atau terkecilnya. Untuk mengetahui diurutkan secara nilai terbesar atau terkecil, setelah klausa ORDER BY dapat ditambahkan ASCENDING ataupun DESCENDING. 
@@ -156,6 +155,3 @@ Contoh Penggunaan:
 
 ## Fungsi Waktu
 
-### Referensi
-- https://www.revou.co/panduan-teknis/sql-sum
-- 
