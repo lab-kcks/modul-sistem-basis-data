@@ -9,9 +9,9 @@
     - [MIN](#min-nilai-minimum-sebuah-kolom)
     - [SUM](#sum-total-nilai-nilai)
 - [Operator Between, IN, LIKE](#operator-between-in-like)
-    - [Operator Between](#operator-between)
-    - [Operator IN](#operator-in)
-    - [Operator LIKE](#operator-like)
+    - [Between](#operator-between)
+    - [IN](#operator-in)
+    - [LIKE](#operator-like)
 - [Ekspresi Query](#ekspresi-query)
 - [Fungsi Waktu](#fungsi-waktu)
 
