@@ -13,7 +13,13 @@
     - [IN](#operator-in)
     - [LIKE](#operator-like)
 - [Ekspresi Query](#ekspresi-query)
+    - [Mengganti Nama Field Output](#mengganti-nama-field-output)
+    - [Menambah Baris Teks Output](#menambah-baris-teks-output)
+    - [Ekspresi Kondisi](#ekspresi-kondisi)
 - [Fungsi Waktu](#fungsi-waktu)
+    - [Current Time](#current-time)
+    - [Timediff](#timediff)
+    - [Year/ Month/ Day](#year-month-day)
 
 ## Pengurutan Data
 ORDER BY dalam _sql_ digunakan untuk mengurutkan hasil query pada sebuah kolom berdasarkan nilai terbesar atau terkecilnya. Untuk mengetahui diurutkan secara nilai terbesar atau terkecil, setelah klausa ORDER BY dapat ditambahkan ASCENDING ataupun DESCENDING. 
@@ -152,6 +158,80 @@ Contoh Penggunaan:
   ![image](https://github.com/user-attachments/assets/fdf949b3-1d98-47af-85a0-2e4eea6a9779)
   
 ## Ekspresi Query
+### Mengganti Nama Field Output
+```
+SELECT column_name AS alias_name
+FROM table_name;
+```
+Contoh Penggunaan:
+```
+SELECT nama_produk AS 'Nama Produk', harga AS 'Harga (Rp)'
+FROM produk;
+```
+![image](https://github.com/user-attachments/assets/a6a853f2-64b6-47ab-a4c9-554adb94a635)
+
+### Menambah Baris Teks Output
+```
+SELECT 'Text' AS alias_name, column_name
+FROM table_name;
+```
+Contoh Penggunaan:
+```
+SELECT 
+  'Produk ini tersedia' AS keterangan, 
+  nama_produk 
+FROM produk;
+```
+![image](https://github.com/user-attachments/assets/64e6d094-eacc-40ad-a0e3-82eff4a1d3bd)
+
+### Ekspresi Kondisi
+```
+Select Nama_Field_1 Case Nama_Field_2 When 'Nilai_field_2'
+Then 'Keterangan_1' Else 'Keterangan_2'
+End As Nilai_field_2 From Nama_Table;
+```
+Contoh Penggunaan:
+```
+SELECT 
+  nama_pelanggan,
+  CASE jenis_kelamin
+    WHEN 'Laki-laki' THEN 'Mas'
+    ELSE 'Mbak'
+  END AS sapaan
+FROM pelanggan;
+```
+![image](https://github.com/user-attachments/assets/6de128d5-d59d-439d-be65-2973cf795269)
 
 ## Fungsi Waktu
+### Current Time
+```
+SELECT CURTIME()| CURDATE()| NOW();
+```
+Contoh Penggunaan:
+```
+SELECT 
+  NOW() AS 'Waktu Lengkap',
+  CURDATE() AS 'Tanggal Hari Ini',
+  CURTIME() AS 'Jam Saat Ini';
+```
+![image](https://github.com/user-attachments/assets/7283a53a-0ea3-4558-96eb-6f12b0c5c033)
+
+### Timediff
+
+Contoh Penggunaan:
+```
+SELECT 
+  id_transaksi, 
+  tanggal,
+  TIMEDIFF(NOW(), tanggal) AS 'Selisih Waktu Sekarang'
+FROM transaksi;
+```
+![image](https://github.com/user-attachments/assets/5b367fa3-af30-41ad-b710-f6a7556938a6)
+
+### Year/ Month/ Day
+
+```
+SELECT YEAR(CURRENT_TIME());
+```
+![image](https://github.com/user-attachments/assets/de28e7e7-da31-46cd-81b2-3c7b835cd87f)
 
