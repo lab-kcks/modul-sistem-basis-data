@@ -2,6 +2,10 @@
 
 ## Daftar Isi
 
+- [1.Pengenalan JOIN dalam SQL](#1-pengenalan-join-dalam-sql)
+  - [1.1 Self Join](#11-self-join)
+  - [1.2 Outer Join pada Dua Tabel](#12-outer-join-pada-dua-tabel)
+  - [1.3 Join Lebih dari Dua Tabel](#13-join-lebih-dari-dua-tabel)
 - [2. Trigger](#2-trigger)
   - [2.1 Pengenalan](#21-pengenalan-trigger)
   - [2.2 Sintaks](#22-sintaks-trigger)
@@ -16,6 +20,225 @@
   - [3.5 Keuntungan dan Keterbatasan View](#35-keuntungan-dan-keterbatasan-view)
 
 ---
+## 1. Pengenalan JOIN dalam SQL
+
+![image](https://github.com/user-attachments/assets/12c166d6-6c5c-4290-bd7f-eee39ae8127e)
+
+`JOIN` adalah perintah dalam SQL yang digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan kolom yang saling terkait. JOIN memungkinkan kita untuk memperoleh informasi yang lebih komprehensif dengan menghubungkan data yang tersebar di beberapa tabel.
+
+Secara umum, JOIN terbagi ke dalam dua kelompok utama:
+
+- Self Join: penggabungan data dalam satu tabel yang sama.
+- Outer Join: penggabungan data antara dua atau lebih tabel yang berbeda.
+
+---
+
+### 1.1 Self Join
+
+Self Join merupakan proses penggabungan data yang dilakukan antar baris dalam satu tabel. JOIN jenis ini berguna ketika kita ingin membandingkan data yang berada dalam satu tabel yang sama.
+
+### Contoh Struktur Tabel:
+
+![image](https://github.com/user-attachments/assets/f0354718-7bb9-4352-9513-3a21382c6bf7)
+
+### Query:
+
+```sql
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+````
+
+### Penjelasan:
+
+Query ini digunakan untuk mencari pasangan pelanggan yang tinggal di kota yang sama, tetapi merupakan entri data yang berbeda.
+
+### Hasil:
+
+![image](https://github.com/user-attachments/assets/cd685058-2fc8-4aed-b62f-d972b674a682)
+
+---
+
+### 1.2 Outer Join pada Dua Tabel
+
+![image](https://github.com/user-attachments/assets/2a23340e-e7ff-4023-a7ec-aaf73e36e30e)
+
+Outer Join digunakan untuk menggabungkan isi dua tabel atau lebih, baik yang memiliki kecocokan maupun yang tidak. Dengan kata lain, jenis JOIN ini dapat menampilkan semua data dari salah satu tabel meskipun tidak ditemukan pasangan di tabel lainnya.
+
+### Struktur dan Data Contoh:
+
+```sql
+CREATE TABLE mahasiswa (
+    nim INT(10),
+    nama VARCHAR(100),
+    alamat VARCHAR(100),
+    PRIMARY KEY(nim)
+);
+
+CREATE TABLE transaksi (
+    id_transaksi INT(10),
+    nim INT(10),
+    buku VARCHAR(100),
+    PRIMARY KEY(id_transaksi)
+);
+
+INSERT INTO mahasiswa VALUES 
+(21400200,"faqih","bandung"),
+(21400201,"ina","jakarta"),
+(21400202,"anto","semarang"),
+(21400203,"dani","padang"),
+(21400204,"jaka","bandung"),
+(21400205,"nara","bandung"),
+(21400206,"senta","semarang");
+
+INSERT INTO transaksi VALUES 
+(1,21400200,"Buku Informatika"),
+(2,21400202,"Buku Teknik Elektro"),
+(3,21400203,"Buku Matematika"),
+(4,21400206,"Buku Fisika"),
+(5,21400207,"Buku Bahasa Indonesia"),
+(6,21400210,"Buku Bahasa Daerah"),
+(7,21400211,"Buku Kimia");
+```
+
+---
+
+#### 1.2.1 Inner Join
+
+```sql
+SELECT *
+FROM mahasiswa
+INNER JOIN transaksi
+ON mahasiswa.nim = transaksi.nim;
+```
+
+Menampilkan data mahasiswa yang memiliki relasi transaksi, dan hanya baris yang cocok pada kedua tabel yang akan ditampilkan.
+
+![image](https://github.com/user-attachments/assets/ededd437-1980-42d6-b6fa-1d945c4da599)
+
+---
+
+#### 1.2.2 Left Join
+
+```sql
+SELECT *
+FROM mahasiswa
+LEFT JOIN transaksi
+ON mahasiswa.nim = transaksi.nim;
+```
+
+Menampilkan semua mahasiswa beserta transaksinya, jika ada. Jika tidak ada, maka kolom dari tabel `transaksi` akan berisi `NULL`.
+
+![image](https://github.com/user-attachments/assets/895393af-7e96-4eee-a283-54eb3a1ca804)
+
+---
+
+#### 1.2.3 Right Join
+
+```sql
+SELECT *
+FROM mahasiswa
+RIGHT JOIN transaksi
+ON mahasiswa.nim = transaksi.nim;
+```
+
+Menampilkan semua data dari `transaksi`, dan akan melampirkan data mahasiswa jika ditemukan pasangan yang cocok.
+
+![image](https://github.com/user-attachments/assets/3f148eef-bb9f-456c-8951-e946fba6c307)
+
+---
+
+#### 1.2.4 Full Outer Join
+
+```sql
+SELECT *
+FROM mahasiswa
+FULL OUTER JOIN transaksi
+ON mahasiswa.nim = transaksi.nim;
+```
+
+Jika sistem basis data tidak mendukung `FULL OUTER JOIN`, dapat disiasati dengan:
+
+```sql
+SELECT *
+FROM mahasiswa
+LEFT JOIN transaksi ON mahasiswa.nim = transaksi.nim
+UNION ALL
+SELECT *
+FROM mahasiswa
+RIGHT JOIN transaksi ON mahasiswa.nim = transaksi.nim
+WHERE mahasiswa.nim IS NULL;
+```
+
+Menggabungkan semua baris dari kedua tabel, baik yang cocok maupun tidak.
+
+![image](https://github.com/user-attachments/assets/b870fba3-29a4-461d-8f22-4e6dffa55cc5)
+
+---
+
+### 1.3 Join Lebih dari Dua Tabel
+
+Untuk menggabungkan lebih dari dua tabel, cukup menambahkan klausa `JOIN` secara berurutan dengan kondisi penghubung yang sesuai.
+
+### Contoh Studi Kasus:
+
+```sql
+CREATE TABLE Pemain (
+    id_pemain CHAR(5),
+    nama CHAR(20),
+    id_posisi CHAR(5),
+    id_status CHAR(5)
+);
+
+INSERT INTO Pemain VALUES
+('1', 'Budi', '3','2'),
+('2', 'Rindang', '3','1'),
+('3', 'Bintang', '3','1'),
+('4', 'Wana', '4','3'),
+('5', 'Orion', '1','3');
+
+CREATE TABLE Posisi (
+    id_posisi CHAR(5),
+    ket_posisi CHAR(20)
+);
+
+INSERT INTO Posisi VALUES
+('1', 'Penyerang'),
+('2', 'PenyerangLapis2'),
+('3', 'Gelandang'),
+('4', 'SayapKanan'),
+('5', 'SayapKiri');
+
+CREATE TABLE Status (
+    id_status CHAR(5),
+    ket_status CHAR(20)
+);
+
+INSERT INTO Status VALUES
+('1', 'Sehat'),
+('2', 'Cedera'),
+('3', 'Dipinjam');
+```
+
+### Query:
+
+```sql
+SELECT nama, ket_status, ket_posisi 
+FROM pemain
+JOIN posisi ON pemain.id_posisi = posisi.id_posisi
+JOIN status ON pemain.id_status = status.id_status
+WHERE posisi.ket_posisi = 'Gelandang'
+AND status.ket_status = 'Cedera';
+```
+
+Query ini mencari pemain dengan posisi "Gelandang" yang sedang dalam kondisi "Cedera".
+
+![image](https://github.com/user-attachments/assets/1a6e540b-213d-44fb-9a9a-98ff054827f7)
+
+
+Pemahaman terhadap berbagai jenis JOIN sangat penting dalam pengelolaan data relasional. Dengan memilih jenis JOIN yang sesuai, kita dapat menyusun query yang efisien dan informatif, serta memperoleh data dari banyak tabel secara menyeluruh.
 
 ## 2. Trigger
 
