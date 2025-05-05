@@ -228,7 +228,7 @@ SELECT
 ![image](https://github.com/user-attachments/assets/7283a53a-0ea3-4558-96eb-6f12b0c5c033)
 
 ### 2. Timediff
-Digunakan untuk mmenghitung **selisih** nilai waktu antara 2 nilai waktu.
+Digunakan untuk mmenghitung **selisih** nilai waktu antara 2 nilai waktu.<br>
 Contoh Penggunaan:
 ```
 SELECT 
@@ -246,11 +246,17 @@ SELECT YEAR(CURRENT_TIME());
 ```
 ![image](https://github.com/user-attachments/assets/de28e7e7-da31-46cd-81b2-3c7b835cd87f)
 
+Fungsi terkait lainnya:
+```
+MONTH(CURRENT_DATE())
+DAY(CURRENT_DATE())
+```
+
 
 
 ## Sumber
-https://www.w3schools.com/sql/func_mysql_current_time.asp
-https://www.w3schools.com/sql/sql_case.asp
-https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_timediff
-https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_year
+- https://www.w3schools.com/sql/func_mysql_current_time.asp
+- https://www.w3schools.com/sql/sql_case.asp
+- https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_timediff
+- https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_year
 
