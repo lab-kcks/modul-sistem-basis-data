@@ -158,12 +158,15 @@ Contoh Penggunaan:
   ![image](https://github.com/user-attachments/assets/fdf949b3-1d98-47af-85a0-2e4eea6a9779)
   
 ## Ekspresi Query
+Merupakan kombinasi dari satu atau beberapa nilai, operator, dan fungsi SQL yang semuanya dievaluasi menjadi suatu nilai. 
 ### 1. Mengganti Nama Field Output
+Digunakan ketika ingin menampilkan data dari sebuah tabel namun menggunakan nama (tabel) yang berbeda
 ```
 SELECT column_name AS alias_name
 FROM table_name;
 ```
-Contoh Penggunaan:
+Contoh Penggunaan:<br>
+Pada kasus ini, tabel ```harga``` ingin ditampilkan namun menggunakan title ```Harga  (Rp)```
 ```
 SELECT nama_produk AS 'Nama Produk', harga AS 'Harga (Rp)'
 FROM produk;
@@ -171,11 +174,13 @@ FROM produk;
 ![image](https://github.com/user-attachments/assets/a6a853f2-64b6-47ab-a4c9-554adb94a635)
 
 ### 2. Menambah Baris Teks Output
+Digunakan ketika ingin menambahkan baris text tetap pada hasil query. Biasanya digunakan untuk membuat laporan atau menambahkan hasil deskripsi tetap di query.
 ```
 SELECT 'Text' AS alias_name, column_name
 FROM table_name;
 ```
-Contoh Penggunaan:
+Contoh Penggunaan:<br>
+Pada kasus ini, hasil output akan menampilkan kolom keterangan berisi text tetap yaitu _'Produk ini tersedia'_
 ```
 SELECT 
   'Produk ini tersedia' AS keterangan, 
@@ -185,12 +190,14 @@ FROM produk;
 ![image](https://github.com/user-attachments/assets/64e6d094-eacc-40ad-a0e3-82eff4a1d3bd)
 
 ### 3. Ekspresi Kondisi
+**CASE** adalah ekspresi kondisional di SQL yang berfungsi seperti if-else. Umumnya digunakan untuk mengganti nilai berdasarkan kondisi tertentu.
 ```
 Select Nama_Field_1 Case Nama_Field_2 When 'Nilai_field_2'
 Then 'Keterangan_1' Else 'Keterangan_2'
 End As Nilai_field_2 From Nama_Table;
 ```
-Contoh Penggunaan:
+Contoh Penggunaan:<br>
+Dalam kasus ini, akan menampilkan sapaan 'Mas' jika jenis kelaminnya laki-laki dan 'Mbak' jika jenis kelaminnya perempuan.
 ```
 SELECT 
   nama_pelanggan,
@@ -204,6 +211,10 @@ FROM pelanggan;
 
 ## Fungsi Waktu
 ### 1. Current Time
+Digunakan untuk menampilkan tanggal, waktu, maupun keduanya saat ini. 
+- ```NOW()``` : Mengembalikan tanggal dan waktu saat ini.
+- ```CURDATE()``` : Mengembalikan tanggal saja (tanpa jam).
+- ```CURTIME()``` : Mengembalikan waktu saja (tanpa tanggal).
 ```
 SELECT CURTIME()| CURDATE()| NOW();
 ```
@@ -217,7 +228,7 @@ SELECT
 ![image](https://github.com/user-attachments/assets/7283a53a-0ea3-4558-96eb-6f12b0c5c033)
 
 ### 2. Timediff
-
+Digunakan untuk mmenghitung **selisih** nilai waktu antara 2 nilai waktu.
 Contoh Penggunaan:
 ```
 SELECT 
@@ -229,9 +240,17 @@ FROM transaksi;
 ![image](https://github.com/user-attachments/assets/5b367fa3-af30-41ad-b710-f6a7556938a6)
 
 ### 3. Year/ Month/ Day
-
+Digunakan untuk mengambil bagian dari sebuah waktu tertentu. Contoh: YEAR, MONTH, DAY.
 ```
 SELECT YEAR(CURRENT_TIME());
 ```
 ![image](https://github.com/user-attachments/assets/de28e7e7-da31-46cd-81b2-3c7b835cd87f)
+
+
+
+## Sumber
+https://www.w3schools.com/sql/func_mysql_current_time.asp
+https://www.w3schools.com/sql/sql_case.asp
+https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_timediff
+https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_year
 
