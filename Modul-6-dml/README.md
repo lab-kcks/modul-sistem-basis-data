@@ -24,18 +24,22 @@
 
 ![image](https://github.com/user-attachments/assets/12c166d6-6c5c-4290-bd7f-eee39ae8127e)
 
-`JOIN` adalah perintah dalam SQL yang digunakan untuk menggabungkan data dari dua atau lebih tabel berdasarkan kolom yang saling terkait. JOIN memungkinkan kita untuk memperoleh informasi yang lebih komprehensif dengan menghubungkan data yang tersebar di beberapa tabel.
+`JOIN` merupakan salah satu perintah penting dalam bahasa SQL (Structured Query Language) yang digunakan untuk menggabungkan data dari dua tabel atau lebih dengan memanfaatkan kolom yang memiliki hubungan logis di antara tabel-tabel tersebut. Dengan menggunakan perintah `JOIN`, kita dapat menyatukan data yang sebelumnya tersebar di berbagai tabel menjadi satu tampilan yang utuh, sehingga mempermudah dalam melakukan analisis atau pelaporan yang membutuhkan data dari banyak sumber.
 
-Secara umum, JOIN terbagi ke dalam dua kelompok utama:
+#### Lalu mengapa JOIN ini diperlukan? 
+Melalui mekanisme ini, kita dapat mengakses informasi yang lebih lengkap dan bermakna karena hubungan antar data menjadi lebih terlihat. `JOIN` sangat berguna dalam konteks sistem basis data relasional, di mana data biasanya disimpan dalam bentuk tabel-tabel terpisah yang saling terhubung melalui relasi tertentu seperti foreign key.
 
-- Self Join: penggabungan data dalam satu tabel yang sama.
-- Outer Join: penggabungan data antara dua atau lebih tabel yang berbeda.
+Secara umum, JOIN dalam SQL dibagi menjadi dua kelompok besar berdasarkan sifat penggabungannya:
+
+- Self Join: Merupakan jenis join yang dilakukan pada tabel itu sendiri, yaitu ketika sebuah tabel digabungkan dengan salinan dirinya sendiri. Ini biasanya digunakan untuk membandingkan baris antar entri dalam satu tabel, misalnya untuk menemukan data yang memiliki atribut serupa.
+
+- Outer Join: Digunakan untuk menggabungkan dua atau lebih tabel yang berbeda, termasuk baris-baris data yang mungkin tidak memiliki pasangan yang cocok di tabel lainnya. Outer Join sendiri terdiri dari beberapa variasi seperti Left Join, Right Join, dan Full Outer Join, yang masing-masing memiliki cara kerja dan hasil penggabungan yang berbeda tergantung kebutuhan.
 
 ---
 
 ### 1.1 Self Join
 
-Self Join merupakan proses penggabungan data yang dilakukan antar baris dalam satu tabel. JOIN jenis ini berguna ketika kita ingin membandingkan data yang berada dalam satu tabel yang sama.
+Self Join merupakan proses penggabungan data yang dilakukan antar baris dalam satu tabel. intinya, `JOIN` jenis ini berguna ketika kita ingin membandingkan data yang berada dalam satu tabel yang sama. Untuk contohnya bisa dilihat dibawah ini.
 
 ### Contoh Struktur Tabel:
 
@@ -53,7 +57,7 @@ ORDER BY A.City;
 
 ### Penjelasan:
 
-Query ini digunakan untuk mencari pasangan pelanggan yang tinggal di kota yang sama, tetapi merupakan entri data yang berbeda.
+Query ini digunakan untuk mencari pasangan pelanggan yang tinggal di kota yang sama, tetapi merupakan entri data yang berbeda. Terlihat pada query tabel yang disebutkan hanyalah tabel `Customer` jadi bisa dibilang ini adalah self join.
 
 ### Hasil:
 
@@ -65,7 +69,7 @@ Query ini digunakan untuk mencari pasangan pelanggan yang tinggal di kota yang s
 
 ![image](https://github.com/user-attachments/assets/2a23340e-e7ff-4023-a7ec-aaf73e36e30e)
 
-Outer Join digunakan untuk menggabungkan isi dua tabel atau lebih, baik yang memiliki kecocokan maupun yang tidak. Dengan kata lain, jenis JOIN ini dapat menampilkan semua data dari salah satu tabel meskipun tidak ditemukan pasangan di tabel lainnya.
+Outer Join digunakan untuk menggabungkan isi dua tabel atau lebih, baik yang memiliki kecocokan maupun yang tidak. Dengan kata lain, jenis JOIN ini dapat menampilkan semua data dari salah satu tabel meskipun tidak ditemukan pasangan di tabel lainnya. Untuk contoh kasusnya bisa diliat dibawah.
 
 ### Struktur dan Data Contoh:
 
@@ -114,7 +118,7 @@ INNER JOIN transaksi
 ON mahasiswa.nim = transaksi.nim;
 ```
 
-Menampilkan data mahasiswa yang memiliki relasi transaksi, dan hanya baris yang cocok pada kedua tabel yang akan ditampilkan.
+Inner JOIN Menampilkan data mahasiswa yang memiliki relasi transaksi, dan hanya baris yang cocok pada kedua tabel yang akan ditampilkan. In kalkulus terms, intinya Inner JOIN itu menampilkan irisan dari kedua tabel tersebut. 
 
 ![image](https://github.com/user-attachments/assets/ededd437-1980-42d6-b6fa-1d945c4da599)
 
@@ -172,7 +176,7 @@ RIGHT JOIN transaksi ON mahasiswa.nim = transaksi.nim
 WHERE mahasiswa.nim IS NULL;
 ```
 
-Menggabungkan semua baris dari kedua tabel, baik yang cocok maupun tidak.
+Menggabungkan semua baris dari kedua tabel, baik yang cocok maupun tidak. Simplenya ini adalah gabungan dari kedua isi tabel yang disebutkan di query.
 
 ![image](https://github.com/user-attachments/assets/b870fba3-29a4-461d-8f22-4e6dffa55cc5)
 
@@ -180,7 +184,7 @@ Menggabungkan semua baris dari kedua tabel, baik yang cocok maupun tidak.
 
 ### 1.3 Join Lebih dari Dua Tabel
 
-Untuk menggabungkan lebih dari dua tabel, cukup menambahkan klausa `JOIN` secara berurutan dengan kondisi penghubung yang sesuai.
+Untuk menggabungkan lebih dari dua tabel, cukup menambahkan klausa `JOIN` secara berurutan dengan kondisi penghubung yang sesuai. Untuk studi kasusnya bisa dilihat dibawah. 
 
 ### Contoh Studi Kasus:
 
@@ -233,7 +237,7 @@ WHERE posisi.ket_posisi = 'Gelandang'
 AND status.ket_status = 'Cedera';
 ```
 
-Query ini mencari pemain dengan posisi "Gelandang" yang sedang dalam kondisi "Cedera".
+Query diatas ini akan mencari pemain dengan posisi "Gelandang" yang sedang dalam kondisi "Cedera". Maka dari itu, untuk mencarinya kita memerlukan penggabungan 3 tabel yaitu tabel `pemain`,`posisi` dan `status`
 
 ![image](https://github.com/user-attachments/assets/1a6e540b-213d-44fb-9a9a-98ff054827f7)
 
