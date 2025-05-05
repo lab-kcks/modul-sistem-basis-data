@@ -20,6 +20,7 @@
     - [Current Time](#1-current-time)
     - [Timediff](#2-timediff)
     - [Year/ Month/ Day](#3-year-month-day)
+- [Sumber](#sumber)
 
 ## Pengurutan Data
 ORDER BY dalam _sql_ digunakan untuk mengurutkan hasil query pada sebuah kolom berdasarkan nilai terbesar atau terkecilnya. Untuk mengetahui diurutkan secara nilai terbesar atau terkecil, setelah klausa ORDER BY dapat ditambahkan ASCENDING ataupun DESCENDING. 
@@ -108,7 +109,6 @@ SELECT SUM(subtotal) AS total_penjualan FROM detail_transaksi;
 ## Operator Between, IN, LIKE
 ### 1. Between
 Operator SQL BETWEEN digunakan untuk menguji apakah suatu nilai berada dalam rentang nilai tertentu berupa teks, tanggal, ataupun angka.
-
 ```
 SELECT column_name(s)
 FROM table_name
@@ -252,9 +252,10 @@ MONTH(CURRENT_DATE())
 DAY(CURRENT_DATE())
 ```
 
-
-
 ## Sumber
+- https://www.geeksforgeeks.org/sql-order-by/?ref=gcse
+- https://www.geeksforgeeks.org/sql-logical-operators/?ref=gcse
+- https://www.geeksforgeeks.org/aggregate-functions-in-sql/?ref=gcse
 - https://www.w3schools.com/sql/func_mysql_current_time.asp
 - https://www.w3schools.com/sql/sql_case.asp
 - https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_timediff
