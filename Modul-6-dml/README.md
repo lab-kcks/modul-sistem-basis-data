@@ -1,4 +1,4 @@
-# Modul 8: Trigger & View
+# Modul 8: Join Table, Trigger & View
 
 ## Daftar Isi
 
