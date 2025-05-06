@@ -53,7 +53,7 @@ ORDER BY stok DESC;
 
 
 ## Fungsi Agregasi
-Fungsi Agregasi adalah sebuah fungsi yang akan menghasilkan sebuah value baru/ringkasang data dari hasil perhitungan beberapa kolom pada sebuah operasi query.
+Fungsi Agregasi adalah sebuah fungsi yang akan menghasilkan sebuah value baru/ringkasan data dari hasil perhitungan beberapa kolom pada sebuah operasi query.
 Fungsi agregasi SQL ini sebagian besar digunakan dengan **GROUP BY** dari pernyataan **SELECT**.
 
 |Fungsi Agregasi|Deskripi Fungsi|
@@ -133,7 +133,8 @@ Contoh Penggunaan :
 SELECT * FROM pelanggan
 WHERE kota IN ('Surabaya', 'Jakarta');
 ```
-![image](https://github.com/user-attachments/assets/f80414f6-5dff-4991-8555-c643a282447d)
+![image](https://github.com/user-attachments/assets/3a305fc5-858a-40e6-af8d-41bb9be9900f)
+
 
 ### 3. LIKE
 Operator LIKE merupakan salah satu operator yang dimanfaatkan untuk mencari sebuah data di dalam tabel, seperti fungsi “Search” yang berjalan dengan mencari kolom dengan pola yang spesifik. Dalam operator LIKE ini biasanya menggunakan 2 bentuk simbol yaitu **%** dan **_** . 
