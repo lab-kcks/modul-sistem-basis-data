@@ -1,8 +1,31 @@
-# Modul 8: Procedure dan Function
+# Modul 7: Procedure dan Function
 
 ## Daftar Isi
 
-- []()
+- [Modul 7: Procedure dan Function](#modul-7-procedure-dan-function)
+  - [Daftar Isi](#daftar-isi)
+  - [1. Pengenalan Procedure dan Function dalam SQL](#1-pengenalan-procedure-dan-function-dalam-sql)
+    - [1.1 Jenis-jenis Procedure dan Function di MySQL](#11-jenis-jenis-procedure-dan-function-di-mysql)
+    - [1.2 Mengapa Procedure dan Function Penting?](#12-mengapa-procedure-dan-function-penting)
+  - [2. Perbedaan Procedure dan Function](#2-perbedaan-procedure-dan-function)
+  - [3. Terminologi](#3-terminologi)
+    - [3.1 Parameter](#31-parameter)
+    - [3.2 Return](#32-return)
+  - [4. Syntax](#4-syntax)
+    - [4.1 Untuk Membuat Procedure atau Function](#41-untuk-membuat-procedure-atau-function)
+      - [**Procedure**](#procedure)
+      - [**Function**](#function)
+    - [4.2 Untuk Menghapus Procedure atau Function](#42-untuk-menghapus-procedure-atau-function)
+    - [4.3 Untuk Memanggil Procedure atau Function](#43-untuk-memanggil-procedure-atau-function)
+    - [4.4 Untuk Melihat List Procedure atau Function](#44-untuk-melihat-list-procedure-atau-function)
+  - [5. Demo](#5-demo)
+    - [5.1 Uji Coba Procedure](#51-uji-coba-procedure)
+      - [5.1.1 Procedure Parameter IN](#511-procedure-parameter-in)
+      - [5.1.2 Procedure Parameter OUT](#512-procedure-parameter-out)
+      - [5.1.3 Procedure Parameter INOUT](#513-procedure-parameter-inout)
+      - [5.1.4 Procedure Parameter IN dan OUT](#514-procedure-parameter-in-dan-out)
+      - [5.1.5 Procedure Compound Statement](#515-procedure-compound-statement)
+    - [5.2 Uji Coba Function](#52-uji-coba-function)
 
 - - -
 ## 1. Pengenalan Procedure dan Function dalam SQL
@@ -245,7 +268,7 @@ INSERT INTO `mahasiswa` (`id`, `nama`, `kode_jurusan`) VALUES
 
 ### 5.1 Uji Coba Procedure
 
-#### 4.1.1 Procedure Parameter IN
+#### 5.1.1 Procedure Parameter IN
 
 ```sql
 CREATE PROCEDURE sp_jurusan_mhs(kdjurusan char(2))
@@ -262,7 +285,7 @@ Memanggil Procedure
 CALL sp_jurusan_mhs('01') 
 ```
 
-#### 4.1.2 Procedure Parameter OUT
+#### 5.1.2 Procedure Parameter OUT
 
 ```sql
 CREATE PROCEDURE sp_sum_mhs (OUT sum int(11))
@@ -276,7 +299,7 @@ CALL sp_sum_mhs(@n);
 SELECT @n; 
 ```
 
-#### 4.1.3 Procedure Parameter INOUT
+#### 5.1.3 Procedure Parameter INOUT
 
 ```sql
 CREATE PROCEDURE sp_telp (INOUT telp varchar(20))
@@ -292,7 +315,7 @@ CALL sp_telp(@telp);
 SELECT @telp;
 ```
 
-#### 4.1.4 Procedure Parameter IN dan OUT
+#### 5.1.4 Procedure Parameter IN dan OUT
 
 ```sql
 CREATE PROCEDURE sp_sum_jurusan(IN kdjurusan char(2), OUT sum int)
@@ -307,7 +330,7 @@ CALL sp_sum_jurusan('01', @n);
 SELECT @n; 
 ```
 
-#### 4.1.5 Procedure Compound Statement
+#### 5.1.5 Procedure Compound Statement
 
 ```sql
 DELIMITER $$
@@ -330,7 +353,7 @@ Memanggil Procedure:
 CALL sp_ganti_jurusan('01', 'Statistika')
 ```
 
-### 4.2 Uji Coba Function
+### 5.2 Uji Coba Function
 
 ```sql
 DELIMITER $$
@@ -351,3 +374,4 @@ Memanggil Function:
 ```sql
 SELECT kode_jurusan, nama_jurusan, f_sum_mhs(kode_jurusan) FROM jurusan
 ```
+
