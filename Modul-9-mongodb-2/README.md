@@ -247,7 +247,7 @@ Operasi delete digunakan untuk menghapus dokumen dari sebuah *collection*. Mongo
         ]
         ```
 
-    Untuk menghapus semua dokumen dalam sebuah koleksi, Anda dapat memberikan filter kosong `{}` pada `deleteMany()`:
+    Untuk menghapus semua dokumen dalam sebuah koleksi, kalian dapat memberikan filter kosong `{}` pada `deleteMany()`:
     ```javascript
     db.nama_koleksi_anda.deleteMany({}); // Akan menghapus semua dokumen di koleksi
     ```
@@ -256,12 +256,12 @@ Operasi delete digunakan untuk menghapus dokumen dari sebuah *collection*. Mongo
 ---
 
 ## Agregasi 
-Agregasi dalam MongoDB dapat dianalogikan sebagai sebuah alur pemrosesan data. Data mentah dari koleksi Anda dimasukkan ke dalam alur tersebut, kemudian diproses melalui serangkaian tahapan (stages), di mana setiap tahapan memiliki fungsi spesifik. Hasilnya adalah data yang telah diringkas, dikelompokkan, dihitung, atau ditransformasi bentuknya sesuai dengan kebutuhan analisis. Fokus utama tetap pada aspek membaca dan menganalisis data, meskipun beberapa tahapan dapat menghasilkan data baru.
+Agregasi dalam MongoDB dapat dianalogikan sebagai sebuah alur pemrosesan data. Data mentah dari koleksi kalian dimasukkan ke dalam alur tersebut, kemudian diproses melalui serangkaian tahapan (stages), di mana setiap tahapan memiliki fungsi spesifik. Hasilnya adalah data yang telah diringkas, dikelompokkan, dihitung, atau ditransformasi bentuknya sesuai dengan kebutuhan analisis. Fokus utama tetap pada aspek membaca dan menganalisis data, meskipun beberapa tahapan dapat menghasilkan data baru.
 
 ### Konsep Umum Agregasi MongoDB
 
 **Penjelasan:**
-Agregasi bekerja menggunakan konsep _pipeline_ (saluran pipa). Dokumen-dokumen dari koleksi Anda akan memasuki salah satu ujung pipa, kemudian di dalam pipa tersebut terdapat beberapa stasiun pemrosesan (tahapan/stages). Setiap dokumen akan melewati stasiun-stasiun ini secara berurutan. Pada setiap stasiun, dokumen dapat diubah, difilter, dikelompokkan, atau dihitung. Output dari satu stasiun menjadi input untuk stasiun berikutnya. Pada akhirnya, di ujung pipa lainnya, akan dihasilkan data yang telah terolah.
+Agregasi bekerja menggunakan konsep _pipeline_ (saluran pipa). Dokumen-dokumen dari koleksi kalian akan memasuki salah satu ujung pipa, kemudian di dalam pipa tersebut terdapat beberapa stasiun pemrosesan (tahapan/stages). Setiap dokumen akan melewati stasiun-stasiun ini secara berurutan. Pada setiap stasiun, dokumen dapat diubah, difilter, dikelompokkan, atau dihitung. Output dari satu stasiun menjadi input untuk stasiun berikutnya. Pada akhirnya, di ujung pipa lainnya, akan dihasilkan data yang telah terolah.
 
 **Cara Menjalankan Pipeline Agregasi:**
 Pipeline agregasi dijalankan menggunakan perintah `aggregate()` pada sebuah koleksi. Perintah ini menerima sebuah array yang berisi definisi dari tahapan-tahapan pipeline.
@@ -289,7 +289,7 @@ db.nama_koleksi_anda.aggregate([
 ### Tahapan (Stages) dalam Pipeline Agregasi
 
 **Penjelasan:**
-Ini adalah unit-unit atau stasiun pemrosesan dalam pipeline Anda. Terdapat beragam tahapan yang dapat digunakan, beberapa yang paling umum meliputi:
+Ini adalah unit-unit atau stasiun pemrosesan dalam pipeline kalian. Terdapat beragam tahapan yang dapat digunakan, beberapa yang paling umum meliputi:
 
 -   **`$match`**: Berfungsi sebagai filter. Hanya dokumen yang memenuhi kriteria yang ditentukan yang akan diteruskan ke tahap berikutnya. Serupa dengan operasi `find()`.
 -   **`$group`**: Mengelompokkan dokumen berdasarkan nilai field tertentu. Pada tahap ini, dapat dilakukan kalkulasi seperti total, rata-rata, nilai maksimum/minimum, dan lainnya untuk setiap grup.
@@ -780,7 +780,7 @@ db.produkDijual.aggregate([
 ```
 
 -   **Hasil Output (Tidak langsung tampil di konsol, tetapi tersimpan di koleksi `ringkasanPenjualanKategori`):**
-    Setelah perintah di atas dijalankan, Anda dapat memeriksa koleksi `ringkasanPenjualanKategori`:
+    Setelah perintah di atas dijalankan, kalian dapat memeriksa koleksi `ringkasanPenjualanKategori`:
     ```javascript
     db.ringkasanPenjualanKategori.find().pretty();
     ```
