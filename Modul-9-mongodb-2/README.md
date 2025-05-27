@@ -336,33 +336,6 @@ db.produk.aggregate([
 ]
 ```
 
----
-
-### Optimasi Pipeline Agregasi
-
-**Penjelasan:**
-Untuk memastikan pipeline agregasi berjalan secara optimal dan efisien dalam penggunaan sumber daya, beberapa praktik terbaik dapat diterapkan:
-
-1.  **Filter di Awal**: Gunakan `$match` pada tahap sedini mungkin dalam pipeline. Semakin sedikit dokumen yang diproses pada tahap-tahap selanjutnya, semakin cepat eksekusi pipeline.
-2.  **Pemanfaatan Indeks**: Jika `$match` atau `$sort` menggunakan field yang memiliki indeks, MongoDB dapat memanfaatkan indeks tersebut untuk mempercepat proses pencarian dan pengurutan.
-3.  **Proyeksi Dini**: Gunakan `$project` untuk menghilangkan field-field yang tidak diperlukan sesegera mungkin. Hal ini mengurangi ukuran dokumen yang harus diolah pada tahap berikutnya.
-4.  **Urutan Tahap**: Pertimbangkan urutan tahapan yang paling efisien. Sebagai contoh, mungkin lebih baik melakukan `$project` sebelum `$unwind` jika field array berukuran sangat besar namun hanya beberapa elemen yang dibutuhkan.
-5.  **Opsi `allowDiskUse`**: Jika operasi agregasi memerlukan memori lebih dari batas default (100MB), MongoDB akan menghasilkan galat. Opsi `allowDiskUse: true` dapat disertakan dalam perintah `aggregate()` untuk memungkinkan MongoDB menggunakan file temporer di disk. Namun, ini berpotensi memperlambat kinerja.
-
----
-
-### Batasan Pipeline Agregasi
-
-**Penjelasan:**
-Meskipun merupakan fitur yang sangat berguna, pipeline agregasi memiliki beberapa batasan:
-
-1.  **Ukuran Dokumen BSON**: Hasil dari setiap tahap (dan dokumen input/output) tidak boleh melebihi batas ukuran dokumen BSON, yaitu 16MB.
-2.  **Memori per Tahap**: Secara default, setiap tahap agregasi dibatasi penggunaan memorinya hingga 100MB. Jika melebihi batas ini, diperlukan opsi `allowDiskUse: true`.
-3.  **Jumlah Tahapan**: Tidak ada batasan keras mengenai jumlah tahapan, namun pipeline yang terlalu panjang dan kompleks dapat menyebabkan penurunan performa.
-4.  **Batasan Operator Tertentu**: Beberapa operator agregasi mungkin memiliki batasan spesifik dalam penggunaannya. Selalu rujuk pada dokumentasi resmi MongoDB untuk detail.
-
----
-
 ### MongoDB Agregasi `$match`
 
 **Penjelasan:**
