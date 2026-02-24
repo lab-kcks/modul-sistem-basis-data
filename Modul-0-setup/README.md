@@ -205,7 +205,7 @@ Untuk instalasi di Windows, diperlukan beberapa komponen:
 | **MongoDB Shell (mongosh)** | Command-line interface untuk berinteraksi dengan MongoDB |
 | **MongoDB Compass** _(opsional)_ | GUI untuk visualisasi dan manajemen database |
 
-### Unduh MongoDB Community Server
+### Instalasi MongoDB Community Server
 
 1. Kunjungi halaman unduh resmi:
    [MongoDB Download Center](https://www.mongodb.com/download-center/community)
@@ -232,9 +232,7 @@ Untuk instalasi di Windows, diperlukan beberapa komponen:
 
 7. Klik **Install** dan tunggu proses instalasi selesai.
 
-Instalasi MongoDB Community Server selesai!
-
-### Unduh MongoDB Shell (mongosh)
+### Instalasi MongoDB Shell (mongosh)
 
 MongoDB Shell (`mongosh`) adalah command-line tool yang digunakan untuk terhubung ke MongoDB server dan menjalankan perintah/query. Ini adalah tool utama yang akan kita pakai di **Modul 6** nanti untuk berinteraksi langsung dengan database MongoDB.
 
@@ -271,7 +269,11 @@ MongoDB Shell (`mongosh`) adalah command-line tool yang digunakan untuk terhubun
 
    ![Mongosh berhasil terkoneksi](./img/doninstall.png)
 
-Instalasi dan konfigurasi MongoDB selesai! Jika ada kendala, cek bagian [FAQ](#faq-frequently-asked-questions) di bawah.
+### Instalasi MongoDB Compass (opsional)
+
+---
+
+Jika ada kendala, cek bagian [FAQ](#faq-frequently-asked-questions) di bawah.
 
 ---
 
