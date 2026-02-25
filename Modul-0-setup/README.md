@@ -1,4 +1,26 @@
-# Modul 0 – Introduction, Setup, & Installation
+# Module 0
+
+## Daftar Isi
+
+- [Introduction](#introduction)
+  - [Apa Itu Sistem Basis Data (SBD)?](#apa-itu-sistem-basis-data-sbd)
+  - ["Terus, apa bedanya sih dengan Excel?"](#terus-apa-bedanya-sih-dengan-excel)
+  - [Kapan Kita Menggunakan Konsep SBD?](#kapan-kita-menggunakan-konsep-sbd)
+  - [Apa Saja yang Akan Dipelajari?](#apa-saja-yang-akan-dipelajari)
+  - [Kenapa Harus Install Tools Ini?](#kenapa-harus-install-tools-ini)
+- [Setup & Installation](#setup--installation)
+  - [Instalasi XAMPP](#instalasi-xampp)
+    - [Download XAMPP](#download-xampp)
+    - [Proses Instalasi XAMPP](#proses-instalasi-xampp)
+    - [Menjalankan XAMPP](#menjalankan-xampp)
+    - [Mengakses phpMyAdmin](#mengakses-phpmyadmin)
+  - [Instalasi dan Konfigurasi MongoDB](#instalasi-dan-konfigurasi-mongodb)
+    - [Instalasi MongoDB Community Server](#instalasi-mongodb-community-server)
+    - [Instalasi MongoDB Shell (mongosh)](#instalasi-mongodb-shell-mongosh)
+    - [Instalasi MongoDB Compass (opsional)](#instalasi-mongodb-compass-opsional)
+- [FAQ (Frequently Asked Questions)](#faq-frequently-asked-questions)
+
+---
 
 ## Introduction
 
@@ -53,20 +75,6 @@ Untuk mengikuti praktikum ini, kalian memerlukan dua software utama. Berikut pen
 
 - **XAMPP** — Paket software yang menyediakan Apache, MySQL/MariaDB, PHP, dan phpMyAdmin. Akan digunakan pada **Modul 1–5** untuk bekerja dengan basis data relasional.
 - **MongoDB Community Server & MongoDB Shell (mongosh)** — Basis data NoSQL berbasis dokumen. Akan digunakan pada **Modul 6** untuk bekerja dengan basis data non-relasional.
-
----
-
-## Daftar Isi
-
-- [Instalasi XAMPP](#instalasi-xampp)
-  - [Download XAMPP](#download-xampp)
-  - [Proses Instalasi XAMPP](#proses-instalasi-xampp)
-  - [Menjalankan XAMPP](#menjalankan-xampp)
-  - [Mengakses phpMyAdmin](#mengakses-phpmyadmin)
-- [Instalasi dan Konfigurasi MongoDB](#instalasi-dan-konfigurasi-mongodb)
-  - [Unduh MongoDB Community Server](#unduh-mongodb-community-server)
-  - [Unduh MongoDB Shell (mongosh)](#unduh-mongodb-shell-mongosh)
-- [FAQ](#faq-frequently-asked-questions)
 
 ---
 
