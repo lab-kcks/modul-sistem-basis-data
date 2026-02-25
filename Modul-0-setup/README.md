@@ -1,4 +1,4 @@
-# Modul 0 – Introduction, Setup, & Installation
+# Module 0
 
 ## Daftar Isi
 
