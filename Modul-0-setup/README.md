@@ -228,7 +228,7 @@ Untuk instalasi di Windows, diperlukan beberapa komponen:
 
 6. Pada langkah selanjutnya, kalian bisa **mencentang** opsi untuk menginstal **MongoDB Compass** (opsional).
 
-   > MongoDB Compass **direkomendasikan untuk pembelajaran** karena menyediakan GUI yang memudahkan eksplorasi data. Namun, untuk **mengerjakan tugas praktikum**, yang digunakan hanya **MongoDB Shell (mongosh)**.
+   > MongoDB Compass **direkomendasikan untuk pembelajaran** karena menyediakan GUI yang memudahkan eksplorasi data. Namun, dalam praktikum dapat digunakan juga **MongoDB Shell (mongosh)**.
 
 7. Klik **Install** dan tunggu proses instalasi selesai.
 
