@@ -53,7 +53,7 @@ Perlu diingat, pemilihan primary key yang tepat sangat penting dalam desain data
 
 ### **Relasi**
 
-Dalam diagram ERD, hubungan antara entitas digambarkan dengan menggunakan garis yang menghubungkan entitas. Kardinalitas adalah sifat dari hubungan ini, yang menggambarkan jumlah entitas yang terlibat dalam hubungan tersebut. Ada empat jenis kardinalitas utama:
+Dalam diagram ERD, hubungan antara entitas digambarkan dengan menggunakan garis yang menghubungkan entitas. Kardinalitas adalah sifat dari hubungan ini, yang menggambarkan jumlah entitas yang terlibat dalam hubungan tersebut. Ada lima jenis kardinalitas utama:
 
 1. **Satu-ke-Satu (One-to-One)**: Ini berarti setiap entitas dalam satu set entitas hanya terhubung dengan satu entitas dalam set entitas lain, dan sebaliknya. Contohnya seperti data mahasiswa dengan NIM (Nomor Induk Siswa).
 
@@ -73,6 +73,11 @@ Dalam diagram ERD, hubungan antara entitas digambarkan dengan menggunakan garis 
 
 <img src="./img/relasi41.webp" />
 <img src="./img/relasi42.webp" />
+
+5. **Junction Table**: Tabel tambahan yang dipakai untuk menghubungkan dua tabel yang punya hubungan many-to-many. Hubungan ini terjadi saat satu data bisa terkait dengan banyak data lain, dan sebaliknya. Nah, karena di database relasional hubungan seperti ini tidak bisa langsung dibuat begitu saja, kita perlu menambahkan satu tabel di tengah sebagai penghubung. Tabel inilah yang mencatat pasangan data dari kedua tabel tersebut. Dengan cara ini, hubungan yang awalnya banyak ke banyak bisa dipecah menjadi dua hubungan satu ke banyak (one-to-many), sehingga struktur databasenya jadi lebih rapi dan mudah dikelola.
+
+<img src="./img/junction.png" />
+
 
 ## 2. ERD Chen
 
