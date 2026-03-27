@@ -1,4 +1,4 @@
-﻿# Module 2
+# Module 2
 
 ## Outline
 - [Normalisasi Overview](#Normalisasi)  
@@ -61,12 +61,12 @@ Ada beberapa tahap yang dapat dilalui dalam melakukan normalisasi database
 
 Setiap normal form membangun di atas syarat normal form sebelumnya secara kumulatif. Dengan kata lain, setiap relasi dalam 3NF juga pasti berada dalam 2NF, dan setiap relasi dalam 2NF juga pasti berada dalam 1NF -- seperti himpunan yang bersarang satu sama lain.
 
-> 🢁 level NF ➡ 🢁 relasi join table ➡ 🢁 resources yang diperlukan untuk melakukan relasi = query berjalan lambat dan menghambat process.
+> ⇧ level NF → ⇧ relasi join table → ⇧ resources yang diperlukan untuk melakukan relasi = query berjalan lambat dan menghambat process.
 
 
-Maksud dari pernyataan tersebut adalah semakin tinggi level normalisasi dalam database (🢁 level NF), maka:
+Maksud dari pernyataan tersebut adalah semakin tinggi level normalisasi dalam database (⇧ level NF), maka:
 
-- Semakin banyak relasi antar tabel (🢁 relasi join table) ➡ Karena normalisasi memecah data ke dalam tabel-tabel yang lebih kecil untuk menghindari redundansi dan memastikan integritas data. Akibatnya, untuk mengambil data yang sebelumnya ada dalam satu tabel, kini harus menggunakan JOIN antar beberapa tabel.
+- Semakin banyak relasi antar tabel (⇧ relasi join table) → Karena normalisasi memecah data ke dalam tabel-tabel yang lebih kecil untuk menghindari redundansi dan memastikan integritas data. Akibatnya, untuk mengambil data yang sebelumnya ada dalam satu tabel, kini harus menggunakan JOIN antar beberapa tabel.
 
 ### Real Life Practices -- Memahami Trade-off: Normalisasi vs Performa
 
@@ -97,16 +97,16 @@ Setiap operasi JOIN membutuhkan waktu dan memori server untuk mencocokkan baris 
 |---|---|---|---|---|---|
 | UNF / 1NF | Sedikit (1-2) | Sangat Tinggi | >> Cepat | << Lambat + rawan anomali | [✗] Rendah |
 | 2NF | Sedang | Sedang | ~ Sedang | ~ Lebih baik | ~ Sedang |
-| 3NF | Lebih banyak | Rendah | ~ Agak lambat | >> Cepat & Paling konsisten | [✔] Tinggi |
-| BCNF / 4NF | Paling banyak | Sangat Rendah | << Paling lambat | >> Lebih konsisten dan koheren | [✔] Sangat Tinggi |
+| 3NF | Lebih banyak | Rendah | ~ Agak lambat | >> Cepat & Paling konsisten | [✓] Tinggi |
+| BCNF / 4NF | Paling banyak | Sangat Rendah | << Paling lambat | >> Lebih konsisten dan koheren | [✓] Sangat Tinggi |
 
 ### Kapan Menggunakan Level NF yang Mana?
 
 Pilihan level normalisasi adalah **keputusan desain**, bukan selalu "semakin tinggi semakin baik":
 
-- **Sistem operasional (OLTP)** -- seperti aplikasi transaksi, e-commerce, sistem akademik ➡ gunakan **3NF**. Operasi tulis (insert/update) sering terjadi, sehingga integritas data lebih diprioritaskan.
+- **Sistem operasional (OLTP)** -- seperti aplikasi transaksi, e-commerce, sistem akademik → gunakan **3NF**. Operasi tulis (insert/update) sering terjadi, sehingga integritas data lebih diprioritaskan.
 
-- **Sistem analitik (OLAP/Data Warehouse)** ➡ sering sengaja menggunakan level normalisasi yang **lebih rendah** (bahkan kembali ke bentuk denormalisasi). Karena operasi yang sering dilakukan adalah READ data dalam jumlah besar, kecepatan query lebih diprioritaskan daripada integritas.
+- **Sistem analitik (OLAP/Data Warehouse)** → sering sengaja menggunakan level normalisasi yang **lebih rendah** (bahkan kembali ke bentuk denormalisasi). Karena operasi yang sering dilakukan adalah READ data dalam jumlah besar, kecepatan query lebih diprioritaskan daripada integritas.
 
 ### Strategi Optimasi Performa pada Database Ternormalisasi (in real practices)
  
@@ -158,7 +158,7 @@ Sebelum masuk ke level NF, kita perlu memahami **Functional Dependency (FD)** --
 
 **Functional Dependency** terjadi ketika nilai suatu atribut *secara unik menentukan* nilai atribut lainnya.
 
-**Notasi:** `A ➡ B` dibaca: *"A menentukan B"* atau *"B bergantung pada A"*
+**Notasi:** `A → B` dibaca: *"A menentukan B"* atau *"B bergantung pada A"*
 
 ---
 
@@ -177,9 +177,9 @@ Partial dependencies adalah saat attribute itu dependent kepada sebuah subset pr
 Misalkan PK adalah `(NO_PROJ, ID_KARYAWAN)`:
 
 ```
-(NO_PROJ, ID_KARYAWAN) ➡ JAM_KERJA        [✔] Full dependency -- bergantung pada kedua PK
- NO_PROJ               ➡ NAMA_PROJ         [!] Partial dependency -- hanya bergantung pada NO_PROJ
- ID_KARYAWAN           ➡ NAMA_KARYAWAN     [!] Partial dependency -- hanya bergantung pada ID_KARYAWAN
+(NO_PROJ, ID_KARYAWAN) → JAM_KERJA         [✓] Full dependency -- bergantung pada kedua PK
+ NO_PROJ               → NAMA_PROJ         [!] Partial dependency -- hanya bergantung pada NO_PROJ
+ ID_KARYAWAN           → NAMA_KARYAWAN     [!] Partial dependency -- hanya bergantung pada ID_KARYAWAN
 ```
 
 `NAMA_PROJ` tidak butuh tahu `ID_KARYAWAN` untuk ditentukan -- cukup tahu `NO_PROJ`. Inilah partial dependency.
@@ -192,27 +192,27 @@ Misalkan PK adalah `(NO_PROJ, ID_KARYAWAN)`:
 
 Transitive dependencies adalah saat attribute itu dependent kepada attribute lainnya yang bukan bagian dari primary key. dia lebih susah untuk di identifikasikan diantara dataset.
 
-**Pola:** `PK ➡ A ➡ B` (B bergantung pada A, bukan langsung pada PK)
+**Pola:** `PK → A → B` (B bergantung pada A, bukan langsung pada PK)
 
 **Contoh:**
 
 ```
-ID_KARYAWAN ➡ PEKERJAAN ➡ GAJI_PER_JAM
+ID_KARYAWAN → PEKERJAAN → GAJI_PER_JAM
 ```
 
-- `ID_KARYAWAN ➡ PEKERJAAN` [✔] -- Karyawan punya satu jenis pekerjaan
-- `PEKERJAAN ➡ GAJI_PER_JAM` [✔] -- Setiap jenis pekerjaan punya tarif gaji tetap
+- `ID_KARYAWAN → PEKERJAAN` [✓] -- Karyawan punya satu jenis pekerjaan
+- `PEKERJAAN → GAJI_PER_JAM` [✓] -- Setiap jenis pekerjaan punya tarif gaji tetap
 - Akibatnya: `GAJI_PER_JAM` bergantung secara *transitif* pada `ID_KARYAWAN` melalui `PEKERJAAN`
 
-Contoh lain yang sering dijumpai: pada tabel order, `customer_name` dan `customer_address` bergantung pada `customer_id`, sedangkan `customer_id` bergantung pada `order_id` -- sehingga terbentuk transitive dependency `order_id ➡ customer_id ➡ customer_name`.
+Contoh lain yang sering dijumpai: pada tabel order, `customer_name` dan `customer_address` bergantung pada `customer_id`, sedangkan `customer_id` bergantung pada `order_id` -- sehingga terbentuk transitive dependency `order_id → customer_id → customer_name`.
 
-**Masalah yang ditimbulkan:** Jika tarif gaji Insinyur Listrik naik dari Rp85.000 menjadi Rp90.000, harus update semua baris karyawan yang berprofesi Insinyur Listrik. Jika ada yang terlewat ➡ inkonsistensi data.
+**Masalah yang ditimbulkan:** Jika tarif gaji Insinyur Listrik naik dari Rp85.000 menjadi Rp90.000, harus update semua baris karyawan yang berprofesi Insinyur Listrik. Jika ada yang terlewat → inkonsistensi data.
 
 ---
 
 > [*] **Ringkasan:**
-> - **Partial Dependency** ➡ dieliminasi saat normalisasi ke **2NF**
-> - **Transitive Dependency** ➡ dieliminasi saat normalisasi ke **3NF**
+> - **Partial Dependency** → dieliminasi saat normalisasi ke **2NF**
+> - **Transitive Dependency** → dieliminasi saat normalisasi ke **3NF**
 
 ---
 
@@ -263,15 +263,15 @@ Langkah-langkah :
 
 - Identifikasikan Primary Key, dari tabel diatas tidak ada nilai yang unik yang dapat digunakan menjadi PK. Pada kasus ini primary key nya dapat terdiri dari PROJ_NUM and EMP_NUM.
 
-- Setelah itu kita dapat Mengidentifikasikan dependencies nya. (PROJ_NUM, EMP_NUM) ➡ PROJ_NAME, EMP_NAME, JOB_CLASS, CHG_HOUR, HOURS 
+- Setelah itu kita dapat Mengidentifikasikan dependencies nya. (PROJ_NUM, EMP_NUM) → PROJ_NAME, EMP_NAME, JOB_CLASS, CHG_HOUR, HOURS 
 
 ![Untitled (4)](https://github.com/user-attachments/assets/97706759-1622-49a7-bf91-e0a66145bc86)
 
 **Tabel ini memenuhi 1NF karena:**
-- [✔] Setiap sel bernilai tunggal (atomic)
-- [✔] Tidak ada repeating group
-- [✔] Setiap baris dapat dikenali secara unik melalui composite key `(PROJ_NUM, EMP_NUM)`
-- [✔] Urutan baris tidak memengaruhi fungsi tabel
+- [✓] Setiap sel bernilai tunggal (atomic)
+- [✓] Tidak ada repeating group
+- [✓] Setiap baris dapat dikenali secara unik melalui composite key `(PROJ_NUM, EMP_NUM)`
+- [✓] Urutan baris tidak memengaruhi fungsi tabel
 
 > [!] **Namun**, tabel ini belum 2NF -- karena composite key `(PROJ_NUM, EMP_NUM)` memiliki **partial dependency** (PROJ_NAME hanya bergantung pada PROJ_NUM, EMP_NAME hanya bergantung pada EMP_NUM).
 
@@ -298,11 +298,11 @@ Langkah-langkah konversi dari Normalisasi Tingkat Pertama (1NF) ke Normalisasi T
    Dari tabel 1NF dengan PK `(PROJ_NUM, EMP_NUM)`:
 
    ```
-   PROJ_NUM              ➡ PROJ_NAME          [!] Partial dependency
-   EMP_NUM               ➡ EMP_NAME           [!] Partial dependency
-   EMP_NUM               ➡ JOB_CLASS          [!] Partial dependency
-   EMP_NUM               ➡ CHG_HOUR           [!] Partial dependency
-   (PROJ_NUM, EMP_NUM)   ➡ HOURS              [✔] Full dependency
+   PROJ_NUM              → PROJ_NAME          [!] Partial dependency
+   EMP_NUM               → EMP_NAME           [!] Partial dependency
+   EMP_NUM               → JOB_CLASS          [!] Partial dependency
+   EMP_NUM               → CHG_HOUR           [!] Partial dependency
+   (PROJ_NUM, EMP_NUM)   → HOURS              [✓] Full dependency
    ```
 
    Artinya: `PROJ_NAME`, `EMP_NAME`, `JOB_CLASS`, dan `CHG_HOUR` **tidak membutuhkan kedua PK** untuk ditentukan nilainya -- ini adalah partial dependency yang harus dieliminasi.
@@ -311,9 +311,9 @@ Langkah-langkah konversi dari Normalisasi Tingkat Pertama (1NF) ke Normalisasi T
 
    Untuk setiap komponen Composite PK, buat tabel tersendiri:
 
-   - **Tabel PROJECT** ➡ PK: `PROJ_NUM`, berisi: `PROJ_NAME`
-   - **Tabel EMPLOYEE** ➡ PK: `EMP_NUM`, berisi: `EMP_NAME`, `JOB_CLASS`, `CHG_HOUR`
-   - **Tabel ASSIGNMENT** (tabel hubungan) ➡ PK: `(PROJ_NUM, EMP_NUM)`, berisi: `HOURS`
+   - **Tabel PROJECT** → PK: `PROJ_NUM`, berisi: `PROJ_NAME`
+   - **Tabel EMPLOYEE** → PK: `EMP_NUM`, berisi: `EMP_NAME`, `JOB_CLASS`, `CHG_HOUR`
+   - **Tabel ASSIGNMENT** (tabel hubungan) → PK: `(PROJ_NUM, EMP_NUM)`, berisi: `HOURS`
 
 3. **Pindahkan atribut yang bergantung ke tabel yang sesuai:** Setelah tabel baru dibuat untuk menghilangkan ketergantungan parsial, atribut-atribut yang bergantung harus diarahkan kembali ke tabel yang sesuai. Hal ini dilakukan untuk memastikan bahwa setiap atribut non-Key bergantung sepenuhnya pada Primary Key dan tidak ada ketergantungan parsial yang tersisa.
 
@@ -322,10 +322,10 @@ Dalam konteks normalisasi, langkah-langkah ini berguna untuk menghilangkan keter
 ![Untitled (5)](https://github.com/user-attachments/assets/97b1cdc3-0ca5-4ec7-b37e-e131b0fcf642)
 
 **Verifikasi:** Tabel ASSIGNMENT sekarang memenuhi 2NF karena:
-- [✔] Sudah dalam 1NF
-- [✔] Satu-satunya atribut non-key (`HOURS`) bergantung penuh pada composite key `(PROJ_NUM, EMP_NUM)` -- tidak ada partial dependency
+- [✓] Sudah dalam 1NF
+- [✓] Satu-satunya atribut non-key (`HOURS`) bergantung penuh pada composite key `(PROJ_NUM, EMP_NUM)` -- tidak ada partial dependency
 
-> [!] **Namun**, tabel EMPLOYEE **belum 3NF** -- masih ada transitive dependency: `EMP_NUM ➡ JOB_CLASS ➡ CHG_HOUR`.
+> [!] **Namun**, tabel EMPLOYEE **belum 3NF** -- masih ada transitive dependency: `EMP_NUM → JOB_CLASS → CHG_HOUR`.
 
 # NF3
 
@@ -335,7 +335,7 @@ Normalisasi data dalam bentuk NF3  bertujuan untuk menghilangkan seluruh atribut
 
 - Tidak mengandung ketergantungan transitif
 
-Secara formal, tabel berada dalam 3NF jika memenuhi kondisi: untuk setiap functional dependency non-trivial `X ➡ Y`, berlaku bahwa **X adalah superkey**, *atau* **Y adalah prime attribute** (bagian dari candidate key).
+Secara formal, tabel berada dalam 3NF jika memenuhi kondisi: untuk setiap functional dependency non-trivial `X → Y`, berlaku bahwa **X adalah superkey**, *atau* **Y adalah prime attribute** (bagian dari candidate key).
 
 3NF penting karena menghilangkan redundansi yang tersisa setelah 2NF, mencegah anomali update, dan memastikan semua functional dependencies dipertahankan sehingga tidak ada informasi yang hilang saat dekomposisi tabel.
 
@@ -354,11 +354,11 @@ Perhatikan tabel EMPLOYEE hasil 2NF:
 **Analisis dependency:**
 
 ```
-EMP_NUM  ➡ JOB_CLASS    [✔] Bergantung langsung pada PK
-JOB_CLASS ➡ CHG_HOUR    [!] CHG_HOUR bergantung pada JOB_CLASS, bukan pada EMP_NUM!
+EMP_NUM  → JOB_CLASS    [✓] Bergantung langsung pada PK
+JOB_CLASS → CHG_HOUR    [!] CHG_HOUR bergantung pada JOB_CLASS, bukan pada EMP_NUM!
 ```
 
-Ini adalah **transitive dependency**: `EMP_NUM ➡ JOB_CLASS ➡ CHG_HOUR`
+Ini adalah **transitive dependency**: `EMP_NUM → JOB_CLASS → CHG_HOUR`
 
 ![image](NF3.png)
 
@@ -375,24 +375,24 @@ Dari contoh tersebut membahas atribut tarif per jam yang memiliki ketergantungan
 **Langkah 1: Identifikasi semua transitive dependency**
 
 ```
-JOB_CLASS ➡ CHG_HOUR    [!] Transitive dependency ditemukan
+JOB_CLASS → CHG_HOUR    [!] Transitive dependency ditemukan
 ```
 
 **Langkah 2: Pindahkan atribut yang terlibat ke tabel baru**
 
 Buat tabel baru dengan `JOB_CLASS` sebagai PK:
 
-- **Tabel JOB** ➡ PK: `JOB_CLASS`, berisi: `CHG_HOUR`
-- **Tabel EMPLOYEE** (diperbarui) ➡ PK: `EMP_NUM`, berisi: `EMP_NAME`, `JOB_CLASS` *(sebagai FK ke tabel JOB)*
+- **Tabel JOB** → PK: `JOB_CLASS`, berisi: `CHG_HOUR`
+- **Tabel EMPLOYEE** (diperbarui) → PK: `EMP_NUM`, berisi: `EMP_NAME`, `JOB_CLASS` *(sebagai FK ke tabel JOB)*
 
 **Langkah 3: Pertahankan Foreign Key sebagai penghubung**
 
 `JOB_CLASS` tetap ada di tabel EMPLOYEE sebagai Foreign Key yang merujuk ke tabel JOB -- sehingga relasi antar data tetap terjaga.
 
 **Tabel EMPLOYEE setelah 3NF memenuhi syarat karena:**
-- [✔] Sudah dalam 2NF
-- [✔] Tidak ada atribut non-key (`EMP_NAME`, `JOB_CLASS`) yang bergantung pada atribut non-key lainnya
-- [✔] `CHG_HOUR` sudah dipindah ke tabel JOB yang tepat
+- [✓] Sudah dalam 2NF
+- [✓] Tidak ada atribut non-key (`EMP_NAME`, `JOB_CLASS`) yang bergantung pada atribut non-key lainnya
+- [✓] `CHG_HOUR` sudah dipindah ke tabel JOB yang tepat
 
 > [i] **Catatan:** Setelah 3NF, untuk mendapatkan informasi lengkap karyawan beserta tarifnya, kita perlu melakukan JOIN antara tabel EMPLOYEE dan tabel JOB -- ini adalah trade-off yang sudah kita bahas di bagian Overview.
 
@@ -404,9 +404,9 @@ Syarat dari BCNF adalah :
 
 - Setiap determinan dalam tabel adalah kunci kandidat (candidate key).
 
-**Syarat BCNF secara formal:** Untuk setiap functional dependency non-trivial `X ➡ Y`, **X harus merupakan superkey**.
+**Syarat BCNF secara formal:** Untuk setiap functional dependency non-trivial `X → Y`, **X harus merupakan superkey**.
 
-Perbedaan dengan 3NF: jika 3NF masih mengizinkan `X ➡ Y` selama Y adalah prime attribute, BCNF lebih ketat -- X *tetap harus* superkey tanpa pengecualian.
+Perbedaan dengan 3NF: jika 3NF masih mengizinkan `X → Y` selama Y adalah prime attribute, BCNF lebih ketat -- X *tetap harus* superkey tanpa pengecualian.
 
 Ketika tabel hanya memiliki satu candidate key, maka BCNF sama dengan Normalisasi Tingkat Ketiga (3NF). Namun, BCNF dapat dilanggar jika tabel memiliki lebih dari satu candidate key.
 Dengan kata lain, BCNF memastikan bahwa setiap determinan dalam tabel secara independen menentukan setiap atribut lainnya dalam tabel, tanpa ada ketergantungan yang tidak perlu. Hal ini membantu mengurangi redundansi data dan memastikan integritas data yang lebih baik dalam basis data.
@@ -427,11 +427,11 @@ Dalam konteks ini, tabel dapat memenuhi semua syarat Normalisasi Tingkat Ketiga 
 
 ## Contoh Abstrak
 
-- A+B ➡ C, D
+- A+B → C, D
   
-- A+C ➡ B, D
+- A+C → B, D
   
-- C ➡ B
+- C → B
 
 dikarenakan terdapat dependency antara C dan B, table nya gagal untuk memenuhi BCNF.
 
@@ -443,12 +443,12 @@ Perhatikan relasi R dengan atribut `(STUDENT, TEACHER, SUBJECT)`:
 
 **Functional Dependencies:**
 ```
-(STUDENT, TEACHER)  ➡ SUBJECT    [✔] Candidate key 1
-(STUDENT, SUBJECT)  ➡ TEACHER    [✔] Candidate key 2
-TEACHER             ➡ SUBJECT    [!] TEACHER menentukan SUBJECT, tapi TEACHER bukan candidate key!
+(STUDENT, TEACHER)  → SUBJECT    [✓] Candidate key 1
+(STUDENT, SUBJECT)  → TEACHER    [✓] Candidate key 2
+TEACHER             → SUBJECT    [!] TEACHER menentukan SUBJECT, tapi TEACHER bukan candidate key!
 ```
 
-Relasi ini sudah berada dalam 3NF (tidak ada transitive dependency pada non-prime attribute), namun **melanggar BCNF** -- karena pada FD `TEACHER ➡ SUBJECT`, TEACHER bukan superkey. Akibatnya: jika kita menghapus data Bayu, informasi bahwa Bu Rina mengajar Database ikut hilang -- ini adalah anomali delete.
+Relasi ini sudah berada dalam 3NF (tidak ada transitive dependency pada non-prime attribute), namun **melanggar BCNF** -- karena pada FD `TEACHER → SUBJECT`, TEACHER bukan superkey. Akibatnya: jika kita menghapus data Bayu, informasi bahwa Bu Rina mengajar Database ikut hilang -- ini adalah anomali delete.
 
 ## Solusi
 
@@ -472,9 +472,9 @@ Ketergantungan multivariabel (multivalued dependencies) terjadi ketika satu kunc
 
 **Multivalued Dependency (MVD)** adalah generalisasi dari functional dependency, namun keduanya berbeda: pada FD, satu nilai A menentukan tepat satu nilai B; pada MVD, satu nilai A menentukan *sekumpulan* nilai B secara independen dari atribut lainnya.
 
-**Notasi MVD:** `A ➡ B` dibaca: *"A multi-determines B"*
+**Notasi MVD:** `A → B` dibaca: *"A multi-determines B"*
 
-**Syarat MVD terjadi:** MVD `A ➡ B` membutuhkan minimal 3 atribut, dan B serta C (atribut ketiga) harus **independen satu sama lain**.
+**Syarat MVD terjadi:** MVD `A → B` membutuhkan minimal 3 atribut, dan B serta C (atribut ketiga) harus **independen satu sama lain**.
 
 ## Kapan MVD Terjadi?
 
@@ -483,8 +483,8 @@ MVD terjadi ketika: untuk satu nilai A, terdapat banyak nilai B **dan** banyak n
 **Contoh nyata:** Sebuah kursus bisa memiliki banyak instruktur, dan sebuah kursus juga bisa memiliki banyak penulis buku teks. Namun instruktur dan penulis buku teks tidak saling bergantung -- pilihan instruktur tidak menentukan penulis buku, dan sebaliknya. Ini menciptakan dua MVD independen:
 
 ```
-Course ➡ Instructor
-Course ➡ TextBook_Author
+Course → Instructor
+Course → TextBook_Author
 ```
 
 Jika disimpan dalam satu tabel, muncul *cartesian product effect*: jika sebuah kursus punya 3 instruktur dan 2 penulis buku, dibutuhkan **3 x 2 = 6 baris** hanya untuk merepresentasikan semua kombinasi -- padahal tidak ada hubungan nyata antara instruktur dan penulis.
@@ -509,8 +509,8 @@ Untuk memenuhi Normalisasi Tingkat Keempat (4NF), tabel harus memenuhi dua syara
 
 **Analisis MVD:**
 ```
-EMP_NUM ➡ ORG_CODE      (satu karyawan bisa di banyak organisasi)
-EMP_NUM ➡ ASSIGN_NUM    (satu karyawan bisa punya banyak penugasan)
+EMP_NUM → ORG_CODE      (satu karyawan bisa di banyak organisasi)
+EMP_NUM → ASSIGN_NUM    (satu karyawan bisa punya banyak penugasan)
 ```
 
 ORG_CODE dan ASSIGN_NUM **independen satu sama lain** -- pilihan organisasi tidak menentukan penugasan, dan sebaliknya. Namun keduanya sama-sama ditentukan oleh EMP_NUM.
@@ -523,8 +523,8 @@ ORG_CODE dan ASSIGN_NUM **independen satu sama lain** -- pilihan organisasi tida
 
 - Dalam contoh ini, kita dapat membuat tabel untuk ASSIGNMENT dan SERVICES_V1.
 
-  - **Tabel SERVICE** ➡ berisi: `EMP_NUM`, `ORG_CODE`
-  - **Tabel ASSIGNMENT** ➡ berisi: `EMP_NUM`, `ASSIGN_NUM`
+  - **Tabel SERVICE** → berisi: `EMP_NUM`, `ORG_CODE`
+  - **Tabel ASSIGNMENT** → berisi: `EMP_NUM`, `ASSIGN_NUM`
 
 Dengan pemisahan ini, menambah organisasi baru untuk seorang karyawan cukup menambah **satu baris** di tabel SERVICE -- tidak perlu menyentuh tabel ASSIGNMENT sama sekali.
 
@@ -560,9 +560,9 @@ Diberikan sebuah tabel normalisasi data, tentukan:
 **Jawaban: Tabel berada dalam 1NF**
 
 Tabel ini memenuhi syarat 1NF karena:
-- [✔] Setiap sel bernilai tunggal (atomic) -- tidak ada sel berisi lebih dari satu nilai
-- [✔] Tidak ada repeating group (kolom berulang untuk jenis data yang sama)
-- [✔] Setiap baris dapat dikenali secara unik
+- [✓] Setiap sel bernilai tunggal (atomic) -- tidak ada sel berisi lebih dari satu nilai
+- [✓] Tidak ada repeating group (kolom berulang untuk jenis data yang sama)
+- [✓] Setiap baris dapat dikenali secara unik
 
 **Namun, tabel ini BELUM 2NF** karena memiliki Composite Primary Key `(NO_PROJ, ID_KARYAWAN)` dengan partial dependencies di dalamnya.
 
@@ -576,22 +576,22 @@ Tabel ini memenuhi syarat 1NF karena:
 
 **Partial Dependencies yang ditemukan:**
 ```
-NO_PROJ      ➡ NAMA_PROJ                               [!] Partial
-ID_KARYAWAN  ➡ NAMA_KARYAWAN, PEKERJAAN, GAJI_PER_JAM  [!] Partial
+NO_PROJ      → NAMA_PROJ                               [!] Partial
+ID_KARYAWAN  → NAMA_KARYAWAN, PEKERJAAN, GAJI_PER_JAM  [!] Partial
 ```
 
 Penjelasan: `NAMA_PROJ` hanya butuh tahu `NO_PROJ` untuk ditentukan -- tidak perlu tahu `ID_KARYAWAN`. Begitu pula `NAMA_KARYAWAN`, `PEKERJAAN`, dan `GAJI_PER_JAM` hanya bergantung pada `ID_KARYAWAN`.
 
 **Full Dependency yang ada:**
 ```
-(NO_PROJ, ID_KARYAWAN) ➡ JAM_KERJA    [✔] Full dependency
+(NO_PROJ, ID_KARYAWAN) → JAM_KERJA    [✓] Full dependency
 ```
 
 `JAM_KERJA` memang membutuhkan **kedua** nilai PK -- berapa jam seorang karyawan (`ID_KARYAWAN`) bekerja di sebuah proyek (`NO_PROJ`) adalah data unik per kombinasi keduanya.
 
 **Transitive Dependency yang ditemukan:**
 ```
-ID_KARYAWAN ➡ PEKERJAAN ➡ GAJI_PER_JAM    [!] Transitive
+ID_KARYAWAN → PEKERJAAN → GAJI_PER_JAM    [!] Transitive
 ```
 
 `GAJI_PER_JAM` tidak bergantung langsung pada `ID_KARYAWAN`, melainkan bergantung pada `PEKERJAAN` -- dan `PEKERJAAN` yang bergantung pada `ID_KARYAWAN`. Semua karyawan dengan pekerjaan yang sama akan selalu memiliki `GAJI_PER_JAM` yang sama.
@@ -635,7 +635,7 @@ Dari analisis di atas, kita buat **3 tabel**:
 
 **Verifikasi:** Tabel KARYAWAN sudah 2NF karena semua atribut non-key (`NAMA_KARYAWAN`, `PEKERJAAN`, `GAJI_PER_JAM`) bergantung penuh pada PK tunggal `ID_KARYAWAN`. Tabel AKUMULASI sudah 2NF karena `JAM_KERJA` bergantung penuh pada composite key `(NO_PROJ, ID_KARYAWAN)`.
 
-> [!] **Namun**, tabel KARYAWAN **belum 3NF** -- masih ada transitive dependency: `ID_KARYAWAN ➡ PEKERJAAN ➡ GAJI_PER_JAM`.
+> [!] **Namun**, tabel KARYAWAN **belum 3NF** -- masih ada transitive dependency: `ID_KARYAWAN → PEKERJAAN → GAJI_PER_JAM`.
 
 ---
 
@@ -643,7 +643,7 @@ Dari analisis di atas, kita buat **3 tabel**:
 
 **Langkah:** Pisahkan transitive dependency ke tabel baru.
 
-Karena `PEKERJAAN ➡ GAJI_PER_JAM`, kita pisahkan ke tabel tersendiri:
+Karena `PEKERJAAN → GAJI_PER_JAM`, kita pisahkan ke tabel tersendiri:
 
 **Tabel PEKERJAAN** (tabel baru untuk transitive dependency):
 
@@ -670,10 +670,10 @@ Karena `PEKERJAAN ➡ GAJI_PER_JAM`, kita pisahkan ke tabel tersendiri:
 ![alt text](image-5.png)
 
 **Verifikasi akhir:**
-- [✔] Tabel PROJECT: 3NF -- PK tunggal `NO_PROJ`, tidak ada dependency lain
-- [✔] Tabel KARYAWAN: 3NF -- tidak ada transitive dependency (`GAJI_PER_JAM` sudah dipindah)
-- [✔] Tabel PEKERJAAN: 3NF -- PK tunggal `PEKERJAAN`, hanya ada satu atribut non-key
-- [✔] Tabel AKUMULASI: 3NF -- tidak ada atribut non-key selain `JAM_KERJA`
+- [✓] Tabel PROJECT: 3NF -- PK tunggal `NO_PROJ`, tidak ada dependency lain
+- [✓] Tabel KARYAWAN: 3NF -- tidak ada transitive dependency (`GAJI_PER_JAM` sudah dipindah)
+- [✓] Tabel PEKERJAAN: 3NF -- PK tunggal `PEKERJAAN`, hanya ada satu atribut non-key
+- [✓] Tabel AKUMULASI: 3NF -- tidak ada atribut non-key selain `JAM_KERJA`
 
 > [i] **Manfaat nyata:** Sekarang jika tarif Insinyur Listrik naik, kita cukup **update satu baris** di tabel PEKERJAAN -- semua karyawan Insinyur Listrik otomatis ter-update karena mereka mengacu ke tabel yang sama via FK.
 
