@@ -407,38 +407,23 @@ CREATE TABLE newTableName AS
 **Contoh:**
 
 ```sql
-CREATE TABLE newMateri AS
-    SELECT Nama_materi, Jenis_Materi
-    FROM materi;
+CREATE TABLE daftar_pengguna_tryout AS
+    SELECT ID_Pengguna, ID_Tryout
+    FROM result_tryout;
 ```
 
 <img src="./aaa.webp" />
 <img src="./aaa1.webp" />
 
-Maka akan terbentuk table baru bernama `newmateri` yang berisi kolom `Nama_Materi` dan `Jenis_Materi` dari table `materi`.
+Maka akan terbentuk tabel baru bernama `daftar_pengguna_tryout` yang berisi 
+kolom `ID_Pengguna` dan `ID_Tryout` dari tabel `result_tryout`.
 
-**Contoh:**
-
-**Membuat table baru:**
-
-```sql
-CREATE TABLE buku (
-    id_buku INT PRIMARY KEY AUTO_INCREMENT,
-    judul VARCHAR(255) NOT NULL,
-    pengarang VARCHAR(255) NOT NULL,
-    penerbit VARCHAR(255) NOT NULL,
-    tahun_terbit INT NOT NULL,
-    ketersediaan BOOLEAN NOT NULL
-);
-```
-
-**Membuat table dari table yang sudah ada:**
-
-```sql
-CREATE TABLE database_buku AS
-SELECT judul, pengarang, ketersediaan
-FROM buku;
-```
+> ⚠️ Perlu diperhatikan bahwa constraint seperti PRIMARY KEY dan FOREIGN KEY 
+> tidak ikut tersalin saat menggunakan `CREATE TABLE ... AS SELECT`, sehingga 
+> kolom-kolom tersebut akan menjadi kolom biasa di tabel yang baru. Selain itu, 
+> `CREATE TABLE ... AS SELECT` juga tidak mendukung penambahan constraint 
+> secara langsung, sehingga harus ditambahkan secara manual menggunakan 
+> `ALTER TABLE` setelah tabel dibuat.
 
 #### Melalui UI
 
