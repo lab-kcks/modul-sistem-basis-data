@@ -425,6 +425,32 @@ kolom `ID_Pengguna` dan `ID_Tryout` dari tabel `result_tryout`.
 > secara langsung, sehingga harus ditambahkan secara manual menggunakan 
 > `ALTER TABLE` setelah tabel dibuat.
 
+#### Junction Table
+
+Junction table dibuat menggunakan `CREATE TABLE` biasa, dengan ciri khas memiliki dua `FOREIGN KEY` yang mereferensi dua tabel berbeda, dan keduanya digabung menjadi `PRIMARY KEY` (composite primary key).
+
+**Contoh:**
+ ```sql
+ CREATE TABLE mahasiswa (
+     id_mahasiswa INT PRIMARY KEY AUTO_INCREMENT,
+     nama VARCHAR(50) NOT NULL
+ );
+ 
+ CREATE TABLE mata_kuliah (
+     id_matkul INT PRIMARY KEY AUTO_INCREMENT,
+     nama_matkul VARCHAR(100) NOT NULL
+ );
+ 
+ -- Junction table
+ CREATE TABLE mahasiswa_matkul (
+     id_mahasiswa INT,
+     id_matkul INT,
+     PRIMARY KEY (id_mahasiswa, id_matkul),
+     FOREIGN KEY (id_mahasiswa) REFERENCES mahasiswa(id_mahasiswa),
+     FOREIGN KEY (id_matkul) REFERENCES mata_kuliah(id_matkul)
+ );
+ ```
+
 #### Melalui UI
 
 - Klik **_New_** pada bagian kiri tampilan phpMyAdmin.
