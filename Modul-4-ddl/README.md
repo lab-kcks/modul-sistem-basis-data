@@ -1,12 +1,5 @@
 # Module 4
 ## Daftar Isi
-- [DDL](#ddl-data-definition-language)
-  - [ADD](#a-menambah-kolom-add)
-  - [MODIFY](#b-mengubah-tipe-data-kolom-modify)
-  - [DROP COLUMN](#c-menghapus-kolom-drop)
-  - [DROP TABLE](#d-menghapus-tabel-drop)
-  - [CHANGE COLUMN](#e-mengubah-nama-kolom-change)
-  - [RENAME](#f-mengubah-nama-tabel-rename)
 - [DML](#dml-data-manipulation-language)
   - [INSERT](#1-menambah-data-baru-insert)
   - [UPDATE](#2-modifikasi-data-update)
@@ -15,85 +8,6 @@
 
 ## Introduction
 ![image](https://github.com/user-attachments/assets/10eb221c-3239-46e3-b52b-fef60aa8d7a4)
-
-## DDL (Data Definition Language)
-## ALTER TABLE
-_Statement_ ```ALTER TABLE``` digunakan untuk menambah, menghapus, dan memodifikasi kolom yang ada pada sebuah tabel.
-```sql
-ALTER TABLE table_name
-{ADD|MODIFY|DROP|CHANGE} (column/data_type);
-```
-### A. Menambah Kolom (ADD)
-Command ini digunakan ketika ingin menambahkan kolom baru pada sebuah tabel yang sudah tersedia.
-```sql
-ALTER TABLE table_name
-ADD column data_type;
-```
-
-```sql
-ALTER TABLE Customers
-ADD Email varchar(255);
-```
-
-### B. Mengubah Tipe Data Kolom (MODIFY)
-MODIFY digunakan ketika ingin mengubah tipe data dari sebuah kolom yang sudah tersedia.
-```sql
-ALTER TABLE table_name
-MODIFY COLUMN column new_data_type;
-```
-```sql
-ALTER TABLE Customers
-MODIFY COLUMN username char;
-```
-### C. Menghapus Kolom (DROP)
-Command ini digunakan ketika ingin menghapus sebuah kolom dalam tabel yang sudah tersedia.
-```sql
-ALTER TABLE table_name
-DROP COLUMN column;
-```
-```sql
-ALTER TABLE Customers
-DROP COLUMN Email;
-```
-### D. Menghapus Tabel (DROP)
-Command DROP juga dapat digunakan jika ingin menghapus sebuah tabel. <br>
-```sql
-DROP TABLE table_name;
-```
-```sql
-DROP TABLE customers;
-```
-![image](https://github.com/user-attachments/assets/c9f1cf47-ea19-470e-9456-830cee4a1e53)
-
-### E. Mengubah Nama Kolom (CHANGE)
-Command ini digunakan untuk mengubah atau rename nama kolom yang sudah tersedia.
-```sql
-ALTER TABLE table_name
-CHANGE COLUMN column_name new_column_name definition/data_type
-```
-
-```sql
-ALTER TABLE Customers
-CHANGE COLUMN email cust_email VARCHAR(255)
-```
-
-### F. Mengubah Nama Tabel (RENAME)
-Command ini digunakan ketika ingin mengubah nama dari sebuah tabel.
-```sql
-ALTER TABLE table_name RENAME TO new_table_name;
-```
-```sql
-ALTER TABLE customers RENAME TO pelanggan;
-```
-
-## TRUNCATE
-TRUNCATE digunakan ketika ingin menghapus semua data yang ada di tabel tertentu tanpa menghapus tabel nya itu sendiri.
-```sql
-TRUNCATE TABLE table_name
-```
-```sql
-TRUNCATE TABLE Customers
-```
 
 
 ## DML (Data Manipulation Language)

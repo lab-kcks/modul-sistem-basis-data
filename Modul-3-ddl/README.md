@@ -14,7 +14,6 @@
   - [Tipe Data Binary](#tipe-data-binary)
   - [Tipe Data Boolean](#tipe-data-boolean)
 - [SQL Command Types](#sql-command-types)
-  - [SQL Command Types](#sql-command-types)
   - [1. Data Definition Language (DDL)](#1-data-definition-language-ddl)
     - [CREATE](#create)
     - [ALTER](#alter)
@@ -24,10 +23,26 @@
     - [Membuat Database](#membuat-database-melalui-console-dan-ui)
     - [Membuat Table](#membuat-table)
     - [Constraint Table](#constraint-table)
+    - [ADD](#a-menambah-kolom-add)
+    - [MODIFY](#b-mengubah-tipe-data-kolom-modify)
+    - [ALTER TABLE](#alter-table)
+      - [A. Menambah Kolom (ADD)](#a-menambah-kolom-add)
+      - [B. Mengubah Tipe Data Kolom (MODIFY)](#b-mengubah-tipe-data-kolom-modify)
+      - [C. Menghapus Kolom (DROP)](#c-menghapus-kolom-drop)
+      - [D. Menghapus Tabel (DROP)](#d-menghapus-tabel-drop)
+      - [E. Mengubah Nama Kolom (CHANGE)](#e-mengubah-nama-kolom-change)
+      - [F. Mengubah Nama Tabel (RENAME)](#f-mengubah-nama-tabel-rename)
+    - [TRUNCATE](#truncate)
   - [2. Data Manipulation Language (DML)](#2-data-manipulation-language-dml)
+    - [INSERT](#1-menambah-data-baru-insert)
+    - [UPDATE](#2-modifikasi-data-update)
+    - [DELETE](#3-menghapus-data-delete)
+    - [SELECT](#4-menampilkan-data-select)
   - [3. Data Query Language (DQL)](#3-data-query-language-dql)
   - [4. Data Control Language (DCL)](#4-data-control-language-dcl)
   - [5. Transaction Control Language (TCL)](#5-transaction-control-language-tcl)
+- [Referensi](#referensi)
+
 # Pengenalan MySQL
 
 Setiap bahasa pemrograman memiliki fungsi yang berbeda. Begitu pula dengan Structured Query Language (SQL). SQL adalah bahasa query yang dirancang untuk pengambilan informasi tertentu dari database. Meskipun saat ini sudah ada berbagai jenis database, seperti MySQL, Microsoft SQL Server, dan PostgreSQL. Akan tetapi mayoritas database tersebut tetap menggunakan dasar SQL.
@@ -555,7 +570,85 @@ CONSTRAINT CUS_UI1 UNIQUE (CUS_LNAME, CUS_FNAME));
 
 Dalam potongan query tersebut, atribut `CUS_AREACODE` diberi nilai default '615'. Oleh karena itu, jika baris tabel `CUSTOMER` baru ditambahkan dan pengguna akhir tidak memasukkan kode area, maka nilai '615' akan dicatat. Juga, kondisi `CHECK` membatasi nilai kode area pelanggan menjadi 615, 713, dan 931; nilai lainnya akan ditolak. Terdapat perintah `CONSTRAINT CUS_UI1 UNIQUE` pada `CUS_LNAME` dan `CUS_FNAME` untuk mencegah 2 nama agar tidak sama. Atribut `CUS_CODE_NUMBER` merupakan `PRIMARY KEY` dari tabel `CUSTOMER`. Atribut yang memiliki constraint `NOT NULL` tidak bisa menerima input nilai `NULL` sehingga dapat mengurangi potensi data irrelevan dan inkonsisten.
 
----
+## ALTER TABLE
+_Statement_ ```ALTER TABLE``` digunakan untuk menambah, menghapus, dan memodifikasi kolom yang ada pada sebuah tabel.
+```sql
+ALTER TABLE table_name
+{ADD|MODIFY|DROP|CHANGE} (column/data_type);
+```
+### A. Menambah Kolom (ADD)
+Command ini digunakan ketika ingin menambahkan kolom baru pada sebuah tabel yang sudah tersedia.
+```sql
+ALTER TABLE table_name
+ADD column data_type;
+```
+
+```sql
+ALTER TABLE Customers
+ADD Email varchar(255);
+```
+
+### B. Mengubah Tipe Data Kolom (MODIFY)
+MODIFY digunakan ketika ingin mengubah tipe data dari sebuah kolom yang sudah tersedia.
+```sql
+ALTER TABLE table_name
+MODIFY COLUMN column new_data_type;
+```
+```sql
+ALTER TABLE Customers
+MODIFY COLUMN username char;
+```
+### C. Menghapus Kolom (DROP)
+Command ini digunakan ketika ingin menghapus sebuah kolom dalam tabel yang sudah tersedia.
+```sql
+ALTER TABLE table_name
+DROP COLUMN column;
+```
+```sql
+ALTER TABLE Customers
+DROP COLUMN Email;
+```
+### D. Menghapus Tabel (DROP)
+Command DROP juga dapat digunakan jika ingin menghapus sebuah tabel. <br>
+```sql
+DROP TABLE table_name;
+```
+```sql
+DROP TABLE customers;
+```
+![image](https://github.com/user-attachments/assets/c9f1cf47-ea19-470e-9456-830cee4a1e53)
+
+### E. Mengubah Nama Kolom (CHANGE)
+Command ini digunakan untuk mengubah atau rename nama kolom yang sudah tersedia.
+```sql
+ALTER TABLE table_name
+CHANGE COLUMN column_name new_column_name definition/data_type
+```
+
+```sql
+ALTER TABLE Customers
+CHANGE COLUMN email cust_email VARCHAR(255)
+```
+
+### F. Mengubah Nama Tabel (RENAME)
+Command ini digunakan ketika ingin mengubah nama dari sebuah tabel.
+```sql
+ALTER TABLE table_name RENAME TO new_table_name;
+```
+```sql
+ALTER TABLE customers RENAME TO pelanggan;
+```
+
+## TRUNCATE
+TRUNCATE digunakan ketika ingin menghapus semua data yang ada di tabel tertentu tanpa menghapus tabel nya itu sendiri.
+```sql
+TRUNCATE TABLE table_name
+```
+```sql
+TRUNCATE TABLE Customers
+```
+
+
 
 ## **2. Data Manipulation Language (DML)**
 
