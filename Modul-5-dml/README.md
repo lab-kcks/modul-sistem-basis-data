@@ -1,36 +1,146 @@
+# Modul 4
+
 ## Daftar Isi
-- [1. Pengurutan Data](#pengurutan-data)
-    - [1.1 ASC (Ascending)](#1-asc)
-    - [1.2 DESC (Descending)](#2-desc)
-- [2. Fungsi Agregasi](#fungsi-agregasi)
-    - [2.1 AVG](#1-avg-menghitung-rata-rata)
-    - [2.2 COUNT](#2-count-menghitung-jumlah-baris)
-    - [2.3 MAX](#3-max-nilai-maksimum-sebuah-kolom)
-    - [2.4 MIN](#4-min-nilai-minimum-sebuah-kolom)
-    - [2.5 SUM](#5-sum-total-nilai-nilai)
-- [3. Operator Between, IN, LIKE](#operator-between-in-like)
-    - [3.1 Between](#1-between)
-    - [3.2 IN](#2-in)
-    - [3.3 LIKE](#3-like)
-- [4. Ekspresi Query](#ekspresi-query)
-    - [4.1 Mengganti Nama Field Output](#1-mengganti-nama-field-output)
-    - [4.2 Menambah Baris Teks Output](#2-menambah-baris-teks-output)
-    - [4.3 Ekspresi Kondisi](#3-ekspresi-kondisi)
-- [5. Fungsi Waktu](#fungsi-waktu)
-    - [5.1 Current Time](#1-current-time)
-    - [5.2 Timediff](#2-timediff)
-    - [5.3 Year/ Month/ Day](#3-year-month-day)
-- [6. Pengenalan JOIN dalam SQL](#1-pengenalan-join-dalam-sql)
-  - [6.1 Self Join](#11-self-join)
-  - [6.2 Outer Join pada Dua Tabel](#12-outer-join-pada-dua-tabel)
-  - [6.3 Join Lebih dari Dua Tabel](#13-join-lebih-dari-dua-tabel)
-- [7. View](#2-view)
-  - [7.1 Pengenalan](#31-pengenalan-view)
-  - [7.2 Sintaks](#32-sintaks-view)
-  - [7.3 Contoh Implementasi](#33-contoh-implementasi-view)
-  - [7.4 Pengujian View](#34-pengujian-view)
-  - [7.5 Keuntungan dan Keterbatasan View](#35-keuntungan-dan-keterbatasan-view)
+- [DML](#dml-data-manipulation-language)
+  - [INSERT](#1-menambah-data-baru-insert)
+  - [UPDATE](#2-modifikasi-data-update)
+  - [DELETE](#3-menghapus-data-delete)
+  - [SELECT](#4-menampilkan-data-select)
+- [1. Pengurutan Data](#1-pengurutan-data)
+    - [1.1 ASC](#11-asc)
+    - [1.2 DESC](#12-desc)
+- [2. Fungsi Agregasi](#2-fungsi-agregasi)
+    - [2.1 AVG](#21-avg-menghitung-rata-rata)
+    - [2.2 COUNT](#22-count-menghitung-jumlah-baris)
+    - [2.3 MAX](#23-max-nilai-maksimum-sebuah-kolom)
+    - [2.4 MIN](#24-min-nilai-minimum-sebuah-kolom)
+    - [2.5 SUM](#25-sum-total-nilai-nilai)
+- [3. Operator Between, IN, LIKE](#3-operator-between-in-like)
+    - [3.1 Between](#31-between)
+    - [3.2 IN](#32-in)
+    - [3.3 LIKE](#33-like)
+- [4. Ekspresi Query](#4-ekspresi-query)
+    - [4.1 Mengganti Nama Field Output](#41-mengganti-nama-field-output)
+    - [4.2 Menambah Baris Teks Output](#42-menambah-baris-teks-output)
+    - [4.3 Ekspresi Kondisi](#43-ekspresi-kondisi)
+- [5. Fungsi Waktu](#5-fungsi-waktu)
+    - [5.1 Current Time](#51-current-time)
+    - [5.2 Timediff](#52-timediff)
+    - [5.3 Year/ Month/ Day](#53-year-month-day)
+- [6. Pengenalan JOIN dalam SQL](#6-1-pengenalan-join-dalam-sql)
+  - [6.1 Self Join](#61-self-join)
+  - [6.2 Outer Join pada Dua Tabel](#62-outer-join-pada-dua-tabel)
+  - [6.3 Join Lebih dari Dua Tabel](#63-join-lebih-dari-dua-tabel)
+- [7. View](#7-view)
+  - [7.1 Pengenalan](#71-pengenalan-view)
+  - [7.2 Sintaks](#72-sintaks-view)
+  - [7.3 Contoh Implementasi](#73-contoh-implementasi-view)
+  - [7.4 Pengujian View](#74-pengujian-view)
+  - [7.5 Keuntungan dan Keterbatasan View](#75-keuntungan-dan-keterbatasan-view)
 - [Sumber](#sumber)
+
+## Introduction
+![image](https://github.com/user-attachments/assets/10eb221c-3239-46e3-b52b-fef60aa8d7a4)
+
+## DML (Data Manipulation Language)
+### 1. Menambah Data Baru (INSERT)
+INSERT digunakan untuk menyisipkan (insert) data baru ke dalam tabel. Kalian dapat menentukan nilai-nilai yang akan dimasukkan ke dalam kolom-kolom yang sesuai.
+
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+```
+
+Contoh Penggunaan :
+```sql
+INSERT INTO anggota (ID_Anggota, Nama_Anggota, No_Hp, Email)
+VALUES ('1', 'Haechan', '083134540788', 'aechaniee@gmail.com');
+```
+![INSERT 1](https://github.com/user-attachments/assets/c7b2be9c-b4d0-487c-9ec0-6072cf8a8cc1)
+
+Ketika kalian ingin memasukkan semua data pada kolom tanpa terkecuali, langsung saja tidak perlu di define kolomnya tidak apa asalkan data yang kamu masukkan juga urut dengan urutan kolom
+
+```sql
+INSERT INTO anggota
+VALUES ('2', 'Jeno', '083154641190', 'nonoo@gmail.com');
+```
+![INSERT 2](https://github.com/user-attachments/assets/ff0bc3d2-962b-4743-8669-2cfb608c97ba)
+
+### 2. Modifikasi Data (UPDATE)
+UPDATE digunakan untuk memperbarui data yang ada dalam tabel. Kalian dapat mengubah nilai-nilai kolom yang ada berdasarkan kondisi yang ditentukan.
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+Contoh Penggunaan :
+```sql
+UPDATE anggota
+SET Nama_Anggota = 'Jaemin', Email = 'nana@gmail.com'
+WHERE ID_Anggota = 2;
+```
+![UPDATE 1](https://github.com/user-attachments/assets/759b99a5-9b44-48c1-9f37-86ddb8baa2da)
+
+⚠️ Jika kalian menggunakan syntax UPDATE jangan lupa menambahkan **WHERE**, karena jika kalian lupa maka data akan terupdate di semua baris 
+
+### 3. Menghapus Data (DELETE)
+DELETE digunakan untuk menghapus data dari tabel. Kalian dapat menentukan kondisi untuk membatasi data mana yang akan dihapus.
+
+```sql
+DELETE FROM table_name  
+WHERE condition;
+```
+
+Contoh Penggunaan :
+- Menghapus baris tertentu sesuai kondisi yang ditetapkan
+  ```sql
+  DELETE FROM anggota
+  WHERE ID_Anggota = 2;
+  ```
+  ![DELETE 1](https://github.com/user-attachments/assets/51de7755-0fee-4756-9810-3790d8c59bb5)
+
+- Menghapus semua baris pada tabel
+  ```sql
+  DELETE FROM anggota;
+  ```
+  ![DELETE 2](https://github.com/user-attachments/assets/a52a9789-175b-44b2-8cb5-5992f71d4545)
+
+### 4. Menampilkan Data (SELECT)
+SELECT digunakan untuk mengambil data dari satu atau lebih tabel di dalam database. Kalian dapat menggunakan SELECT untuk menentukan kolom yang ingin ditampilkan.
+
+- Menampilkan seluruh data di semua kolom tabel
+  ```sql
+  SELECT * FROM table_name; 
+  ```
+  Contoh Penggunaan :
+  ```sql
+  SELECT * FROM anggota;
+  ```
+  ![SELECT 1](https://github.com/user-attachments/assets/ba9a96f7-84b5-483d-9b0b-9e709f0102e3)
+
+- Menampilkan kolom-kolom tertentu
+  ```sql
+  SELECT column1, column2, ... 
+  FROM table_name;
+  ```
+  Contoh Penggunaan :
+  ```sql
+  SELECT Nama_Anggota, No_Hp
+  FROM anggota;
+  ```
+  ![SELECT 2](https://github.com/user-attachments/assets/73df9109-7c0c-4ebc-9815-413c76f2b1ad)
+
+- Menampilkan data atau baris-baris tertentu
+  ```sql
+  SELECT * FROM table_name WHERE condition; 
+  ```
+  Contoh Penggunaan :
+  ```  sql
+  SELECT * FROM anggota WHERE ID_Anggota = '1'; 
+  ```
+  ![SELECT 3](https://github.com/user-attachments/assets/6451f136-47ad-4ba9-9242-13bc61e46ec1)
 
 ## 1. Pengurutan Data
 ORDER BY dalam _sql_ digunakan untuk mengurutkan hasil query pada sebuah kolom berdasarkan nilai terbesar atau terkecilnya. Untuk mengetahui diurutkan secara nilai terbesar atau terkecil, setelah klausa ORDER BY dapat ditambahkan ASCENDING ataupun DESCENDING. 
