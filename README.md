@@ -5,5 +5,5 @@
 3. [Modul 2: Normalisasi](/Modul-2-normalisasi/README.md)
 4. [Modul 3: MySQL dan Data Definition Language (DDL)](/Modul-3-ddl/README.md)
 5. [Modul 4: Data Manipulation Language (DML)](/Modul-4-ddl/README.md)
-6. [Modul 5: Store Procedure dan Function](/Modul-7-store-procedure-dan-function/README.md)
+6. [Modul 5: Trigger, Store Procedure, dan Function](/Modul-5-trigger-procedure-dan-function)
 7. [Modul 6: Json dan MongoDB I](/Modul-8-json-dan-mongodb-1/README.md)
