@@ -1,4 +1,4 @@
-# Modul 8: Create dan Read pada Database NoSQL (MongoDB)
+# Modul 6: Create dan Read pada Database NoSQL (MongoDB)
 
 ## Pendahuluan: MongoDB dan Pengenalan Singkat NoSQL
 
