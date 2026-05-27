@@ -1,7 +1,5 @@
 # Modul 6: JSON dan MongoDB (CRUD Dasar)
 
-> Versi ringkas. Modul ini fokus pada **pengenalan JSON, instalasi MongoDB, dan operasi CRUD dasar**. Materi lanjutan seperti Aggregation Pipeline (`$match`, `$group`, `$lookup`, dan lainnya) sebaiknya dibahas di modul terpisah agar tidak menumpuk dalam satu pertemuan.
-
 ## Daftar Isi
 
 1. [Pengenalan: SQL vs NoSQL](#1-pengenalan-sql-vs-nosql)
