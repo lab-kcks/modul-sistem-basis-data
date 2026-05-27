@@ -1,5 +1,7 @@
 # Modul 6: JSON dan MongoDB
 
+> Modul ini membahas dasar-dasar **MongoDB** sebagai basis data NoSQL berorientasi dokumen, mulai dari pengenalan JSON, instalasi, operasi CRUD, hingga **Aggregation Pipeline**. Materi disusun secara sistematis agar mudah diikuti pemula.
+
 ## Daftar Isi
 
 1. [Pengenalan: SQL vs NoSQL](#1-pengenalan-sql-vs-nosql)
@@ -7,10 +9,19 @@
 3. [Instalasi MongoDB](#3-instalasi-mongodb)
 4. [Konsep Dasar MongoDB](#4-konsep-dasar-mongodb)
 5. [Operasi CRUD](#5-operasi-crud)
-   - 5.1 [Create](#51-create--menyisipkan-data)
-   - 5.2 [Read](#52-read--membaca-data)
-   - 5.3 [Update](#53-update--memperbarui-data)
-   - 5.4 [Delete](#54-delete--menghapus-data)
+   - 5.1 [Create — Menyisipkan Data](#51-create--menyisipkan-data) (2 fungsi)
+     - 5.1.a [`insertOne()`](#51a-insertone--satu-dokumen)
+     - 5.1.b [`insertMany()`](#51b-insertmany--banyak-dokumen-sekaligus)
+   - 5.2 [Read — Membaca Data](#52-read--membaca-data) (2 fungsi)
+     - 5.2.a [`findOne()`](#52a-findone--satu-dokumen-pertama-yang-cocok)
+     - 5.2.b [`find()`](#52b-find--semua-dokumen-yang-cocok)
+   - 5.3 [Update — Memperbarui Data](#53-update--memperbarui-data) (3 fungsi)
+     - 5.3.a [`updateOne()`](#53a-updateone--perbarui-satu-dokumen-pertama-yang-cocok)
+     - 5.3.b [`updateMany()`](#53b-updatemany--perbarui-semua-dokumen-yang-cocok)
+     - 5.3.c [`replaceOne()`](#53c-replaceone--mengganti-seluruh-isi-dokumen)
+   - 5.4 [Delete — Menghapus Data](#54-delete--menghapus-data) (2 fungsi)
+     - 5.4.a [`deleteOne()`](#54a-deleteone--hapus-satu-dokumen-pertama-yang-cocok)
+     - 5.4.b [`deleteMany()`](#54b-deletemany--hapus-semua-dokumen-yang-cocok)
 6. [Aggregation Pipeline](#6-aggregation-pipeline)
    - 6.1 [Konsep Pipeline](#61-konsep-pipeline)
    - 6.2 [`$match`](#62-match--filter)
@@ -240,9 +251,24 @@ db.namaCollection.find()  # lihat isi collection
 
 CRUD = **Create, Read, Update, Delete**. Inilah operasi inti yang harus dikuasai sebelum melangkah ke topik lanjutan.
 
+### Peta Fungsi CRUD
+
+Total **9 fungsi** yang akan dipelajari di bab ini:
+
+| Operasi  | Jumlah | Fungsi                                                  |
+| -------- | :----: | ------------------------------------------------------- |
+| Create   |   2    | `insertOne()`, `insertMany()`                           |
+| Read     |   2    | `findOne()`, `find()`                                   |
+| Update   |   3    | `updateOne()`, `updateMany()`, `replaceOne()`           |
+| Delete   |   2    | `deleteOne()`, `deleteMany()`                           |
+
+> 💡 Pola penamaan konsisten: akhiran `One` berarti satu dokumen, `Many` berarti banyak dokumen. Hanya `replaceOne()` yang sedikit berbeda karena _replace_ memang hanya disediakan versi tunggal.
+
 ### 5.1 Create — Menyisipkan Data
 
-#### `insertOne()` — satu dokumen
+> **2 fungsi utama**: `insertOne()` (5.1.a), `insertMany()` (5.1.b).
+
+#### 5.1.a `insertOne()` — satu dokumen
 
 **Sintaks:**
 
@@ -260,7 +286,7 @@ db.mahasiswa.insertOne({
 });
 ```
 
-#### `insertMany()` — banyak dokumen sekaligus
+#### 5.1.b `insertMany()` — banyak dokumen sekaligus
 
 Lebih efisien daripada memanggil `insertOne()` berulang kali untuk volume data besar.
 
@@ -287,7 +313,9 @@ db.mahasiswa.insertMany([
 
 ### 5.2 Read — Membaca Data
 
-#### `findOne()` — satu dokumen pertama yang cocok
+> **2 fungsi utama**: `findOne()` (5.2.a), `find()` (5.2.b).
+
+#### 5.2.a `findOne()` — satu dokumen pertama yang cocok
 
 **Sintaks:**
 
@@ -321,7 +349,7 @@ Output:
 
 > Pada proyeksi, `1` = tampilkan, `0` = sembunyikan. `_id` ditampilkan secara default kecuali diset `0`.
 
-#### `find()` — semua dokumen yang cocok
+#### 5.2.b `find()` — semua dokumen yang cocok
 
 Mengembalikan **cursor** ke seluruh dokumen yang cocok. Tanpa argumen (`{}`), akan mengembalikan semua dokumen.
 
@@ -358,7 +386,9 @@ db.mahasiswa.find().pretty();
 
 ### 5.3 Update — Memperbarui Data
 
-#### `updateOne()` — perbarui satu dokumen pertama yang cocok
+> **3 fungsi utama**: `updateOne()` (5.3.a), `updateMany()` (5.3.b), `replaceOne()` (5.3.c).
+
+#### 5.3.a `updateOne()` — perbarui satu dokumen pertama yang cocok
 
 **Sintaks:**
 
@@ -409,7 +439,7 @@ db.karyawan.updateOne(
 );
 ```
 
-#### `updateMany()` — perbarui semua dokumen yang cocok
+#### 5.3.b `updateMany()` — perbarui semua dokumen yang cocok
 
 **Sintaks:**
 
@@ -426,7 +456,7 @@ db.karyawan.updateMany(
 );
 ```
 
-#### `replaceOne()` — mengganti seluruh isi dokumen
+#### 5.3.c `replaceOne()` — mengganti seluruh isi dokumen
 
 `replaceOne()` mengganti **seluruh** isi dokumen pertama yang cocok, kecuali field `_id`. Dokumen pengganti **tidak boleh** mengandung operator update seperti `$set`.
 
@@ -466,9 +496,11 @@ db.karyawan.replaceOne(
 
 ### 5.4 Delete — Menghapus Data
 
+> **2 fungsi utama**: `deleteOne()` (5.4.a), `deleteMany()` (5.4.b).
+
 > ⚠️ **Peringatan**: operasi delete **permanen**. Selalu pastikan filter benar sebelum menjalankan.
 
-#### `deleteOne()` — hapus satu dokumen pertama yang cocok
+#### 5.4.a `deleteOne()` — hapus satu dokumen pertama yang cocok
 
 **Sintaks:**
 
@@ -503,7 +535,7 @@ Hasil:
 ]
 ```
 
-#### `deleteMany()` — hapus semua dokumen yang cocok
+#### 5.4.b `deleteMany()` — hapus semua dokumen yang cocok
 
 **Sintaks:**
 
@@ -544,7 +576,7 @@ db.namaCollection.aggregate([
 ]);
 ```
 
-**Stage yang umum dipakai:**
+**Stage yang umum dipakai (10 stage akan dibahas di bab ini):**
 
 | Stage      | Fungsi singkat                                            |
 | ---------- | --------------------------------------------------------- |
