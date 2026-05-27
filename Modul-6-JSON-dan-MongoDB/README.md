@@ -1,7 +1,5 @@
 # Modul 6: JSON dan MongoDB
 
-> Modul ini membahas dasar-dasar **MongoDB** sebagai basis data NoSQL berorientasi dokumen, mulai dari pengenalan JSON, instalasi, operasi CRUD, hingga **Aggregation Pipeline**. Materi disusun secara sistematis agar mudah diikuti pemula.
-
 ## Daftar Isi
 
 1. [Pengenalan: SQL vs NoSQL](#1-pengenalan-sql-vs-nosql)
