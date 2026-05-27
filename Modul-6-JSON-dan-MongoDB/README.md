@@ -260,7 +260,7 @@ Total **9 fungsi** yang akan dipelajari di bab ini:
 | Update   |   3    | `updateOne()`, `updateMany()`, `replaceOne()`           |
 | Delete   |   2    | `deleteOne()`, `deleteMany()`                           |
 
-> 💡 Pola penamaan konsisten: akhiran `One` berarti satu dokumen, `Many` berarti banyak dokumen. Hanya `replaceOne()` yang sedikit berbeda karena _replace_ memang hanya disediakan versi tunggal.
+> Pola penamaan konsisten: akhiran `One` berarti satu dokumen, `Many` berarti banyak dokumen. Hanya `replaceOne()` yang sedikit berbeda karena _replace_ memang hanya disediakan versi tunggal.
 
 ### 5.1 Create — Menyisipkan Data
 
@@ -496,7 +496,7 @@ db.karyawan.replaceOne(
 
 > **2 fungsi utama**: `deleteOne()` (5.4.a), `deleteMany()` (5.4.b).
 
-> ⚠️ **Peringatan**: operasi delete **permanen**. Selalu pastikan filter benar sebelum menjalankan.
+> **Peringatan**: operasi delete **permanen**. Selalu pastikan filter benar sebelum menjalankan.
 
 #### 5.4.a `deleteOne()` — hapus satu dokumen pertama yang cocok
 
@@ -550,7 +550,7 @@ db.inventaris.deleteMany({ jumlah: 0 });
 **Hapus semua dokumen di collection** (filter kosong):
 
 ```javascript
-db.namaCollection.deleteMany({});  // ⚠️ menghapus seluruh isi collection
+db.namaCollection.deleteMany({});  // PERINGATAN: menghapus seluruh isi collection
 ```
 
 
@@ -990,7 +990,7 @@ Operator yang dipakai **di dalam `$group`**:
 - `$first`: ambil nilai dari dokumen **pertama** yang masuk ke grup.
 - `$last`: ambil nilai dari dokumen **terakhir** yang masuk ke grup.
 
-> ⚠️ **Penting**: urutan dokumen sebelum masuk `$group` menentukan siapa "pertama" dan "terakhir". Selalu pasang `$sort` **sebelum** `$group` agar hasilnya konsisten.
+> **Penting**: urutan dokumen sebelum masuk `$group` menentukan siapa "pertama" dan "terakhir". Selalu pasang `$sort` **sebelum** `$group` agar hasilnya konsisten.
 
 **Sintaks:**
 
