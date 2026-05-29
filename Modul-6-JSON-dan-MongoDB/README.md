@@ -1044,9 +1044,9 @@ db.ringkasanPenjualanKategori.find();
 
 ---
 
-## 7. Latihan Singkat
+## 7. Latihan soal ( utk presensi seslab )
 
-Coba kerjakan langsung di `mongosh`:
+Coba kerjakan langsung di `mongosh` atau di `MongoDB Compass`:
 
 1. Buat database bernama `kampus`.
 2. Buat collection `mahasiswa` dan masukkan minimal 5 dokumen (NIM, nama, jurusan, IPK, angkatan).
