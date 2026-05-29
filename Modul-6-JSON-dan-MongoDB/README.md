@@ -30,8 +30,7 @@
    - 6.7 [`$unwind`](#67-unwind--memecah-array)
    - 6.8 [`$count`](#68-count--menghitung-dokumen)
    - 6.9 [`$lookup`](#69-lookup--join-antar-collection)
-   - 6.10 [`$first` & `$last`](#610-first--last)
-   - 6.11 [`$out`](#611-out--menyimpan-hasil)
+   - 6.10 [`$out`](#611-out--menyimpan-hasil)
 7. [Latihan Singkat](#7-latihan-singkat)
 8. [Ringkasan Perintah](#8-ringkasan-perintah)
 9. [Glosarium Sintaks](#9-glosarium-sintaks)
@@ -722,6 +721,33 @@ Hasil:
 ]
 ```
 
+**Contoh:** ambil nama pelanggan pertama dan terakhir yang membeli per produk.
+
+Perintah:
+
+```javascript
+db.penjualan.aggregate([
+  { $sort: { produk_id: 1 } },
+  {
+    $group: {
+      _id: "$produk_id",
+      pelangganPertama: { $first: "$pelanggan" },
+      pelangganTerakhir: { $last: "$pelanggan" }
+    }
+  }
+]);
+```
+
+Hasil:
+
+```json
+[
+  { "_id": 101, "pelangganPertama": "A", "pelangganTerakhir": "C" },
+  { "_id": 102, "pelangganPertama": "B", "pelangganTerakhir": "D" },
+  { "_id": 103, "pelangganPertama": "A", "pelangganTerakhir": "A" }
+]
+```
+
 #### Accumulator yang Sering Dipakai
 
 | Accumulator  | Fungsi                                            |
@@ -983,67 +1009,8 @@ Hasil:
 
 ---
 
-### 6.10 `$first` & `$last`
 
-Operator yang dipakai **di dalam `$group`**:
-
-- `$first`: ambil nilai dari dokumen **pertama** yang masuk ke grup.
-- `$last`: ambil nilai dari dokumen **terakhir** yang masuk ke grup.
-
-> **Penting**: urutan dokumen sebelum masuk `$group` menentukan siapa "pertama" dan "terakhir". Selalu pasang `$sort` **sebelum** `$group` agar hasilnya konsisten.
-
-**Sintaks:**
-
-```javascript
-{
-  $group: {
-    _id: <ekspresi>,
-    fieldPertama: { $first: "$namaField" },
-    fieldTerakhir: { $last: "$namaField" }
-  }
-}
-```
-
-**Contoh:** cari tanggal transaksi pertama dan terakhir untuk setiap produk.
-
-Data input (`penjualan`):
-
-```json
-[
-  { "produk_id": 101, "jumlah": 10, "tanggal": ISODate("2023-03-15") },
-  { "produk_id": 102, "jumlah": 5, "tanggal": ISODate("2023-03-10") },
-  { "produk_id": 101, "jumlah": 12, "tanggal": ISODate("2023-02-20") },
-  { "produk_id": 102, "jumlah": 8, "tanggal": ISODate("2023-03-12") }
-]
-```
-
-Perintah:
-
-```javascript
-db.penjualan.aggregate([
-  { $sort: { tanggal: 1 } },
-  {
-    $group: {
-      _id: "$produk_id",
-      tanggalTransaksiPertama: { $first: "$tanggal" },
-      tanggalTransaksiTerakhir: { $last: "$tanggal" }
-    }
-  }
-]);
-```
-
-Hasil:
-
-```json
-[
-  { "_id": 101, "tanggalTransaksiPertama": ISODate("2023-02-20"), "tanggalTransaksiTerakhir": ISODate("2023-03-15") },
-  { "_id": 102, "tanggalTransaksiPertama": ISODate("2023-03-10"), "tanggalTransaksiTerakhir": ISODate("2023-03-12") }
-]
-```
-
----
-
-### 6.11 `$out` — Menyimpan Hasil
+### 6.10 `$out` — Menyimpan Hasil
 
 Stage `$out` harus menjadi **stage terakhir** dalam pipeline. Hasil pipeline akan dituliskan ke collection baru. Jika collection sudah ada, akan **ditimpa**.
 
