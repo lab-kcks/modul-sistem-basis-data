@@ -31,7 +31,7 @@
    - 6.8 [`$count`](#68-count--menghitung-dokumen)
    - 6.9 [`$lookup`](#69-lookup--join-antar-collection)
    - 6.10 [`$out`](#611-out--menyimpan-hasil)
-7. [Latihan Singkat](#7-latihan-singkat)
+7. [Latihan Soal Presensi](#7-Latihan-soal ( utk presensi seslab ))
 8. [Ringkasan Perintah](#8-ringkasan-perintah)
 9. [Glosarium Sintaks](#9-glosarium-sintaks)
 
